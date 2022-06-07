@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+
 	// etcd 服务注册
 	etcdReg := etcd.NewRegistry(
 		registry.Addrs("127.0.0.1:2379"),

@@ -1,0 +1,107 @@
+syntax="proto3";
+package services;
+import "videoModels.proto";
+option go_package="./;protos";
+
+/*
+  Feed
+ */
+message VideoFeedRequest {
+  // @inject_tag: json:"latest_time"
+  int64 LatestTime =1;
+  // @inject_tag: json:"token"
+  string Token =2;
+}
+message VideoFeedResponse {
+  // @inject_tag: json:"status_code"
+  int32 StatusCode = 1;
+  // @inject_tag: json:"status_msg"
+  string StatusMsg = 2;
+  // @inject_tag: json:"video_list"
+  repeated Video VideoList = 3;
+  // @inject_tag: json:"next_time"
+  int64 NextTime = 4;
+}
+
+
+/*
+  PublishAction
+ */
+message VideoPublishActionRequest {
+  // @inject_tag: json:"token"
+  string Token =1;
+  // @inject_tag: json:"data"
+  bytes Data =2;
+  // @inject_tag: json:"title"
+  string Title =3;
+}
+message VideoPublishActionResponse {
+  // @inject_tag: json:"status_code"
+  int32 StatusCode = 1;
+  // @inject_tag: json:"status_msg"
+  string StatusMsg = 2;
+}
+
+/*
+  PublishList
+ */
+message VideoPublishListRequest {
+  // @inject_tag: json:"user_id"
+  int64 UserId = 1;
+  // @inject_tag: json:"token"
+  string Token =2;
+}
+message VideoPublishListResponse {
+  // @inject_tag: json:"status_code"
+  int32 StatusCode = 1;
+  // @inject_tag: json:"status_msg"
+  string StatusMsg = 2;
+  // @inject_tag: json:"video_list"
+  repeated Video VideoList = 3;
+}
+
+/*
+  FavoriteAction
+ */
+message VideoFavoriteActionRequest {
+  // @inject_tag: json:"user_id"
+  int64 UserId = 1;
+  // @inject_tag: json:"token"
+  string Token = 2;
+  // @inject_tag: json:"video_id"
+  int64 VideoId = 3;
+  // @inject_tag: json:"action_type"
+  int32 ActionType =4;
+}
+message VideoFavoriteActionResponse {
+  // @inject_tag: json:"status_code"
+  int32 StatusCode = 1;
+  // @inject_tag: json:"status_msg"
+  string StatusMsg = 2;
+}
+
+/*
+  FavoriteList
+ */
+message VideoFavoriteListRequest {
+  // @inject_tag: json:"user_id"
+  int64 UserId = 1;
+  // @inject_tag: json:"token"
+  string Token =2;
+}
+message VideoFavoriteListResponse {
+  // @inject_tag: json:"status_code"
+  int32 StatusCode = 1;
+  // @inject_tag: json:"status_msg"
+  string StatusMsg = 2;
+  // @inject_tag: json:"video_list"
+  repeated Video VideoList =3;
+}
+
+service VideoService{
+  rpc Feed(VideoFeedRequest) returns (VideoFeedResponse);
+  rpc PublishAction(VideoPublishActionRequest) returns (VideoPublishActionResponse);
+  rpc PublishList(VideoPublishListRequest) returns (VideoPublishListResponse);
+  rpc FavoriteAction(VideoFavoriteActionRequest) returns (VideoFavoriteActionResponse);
+  rpc FavoriteList(VideoFavoriteListRequest) returns (VideoFavoriteListResponse);
+}

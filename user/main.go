@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/007team/douyinapp/core"
-	"github.com/007team/douyinapp/dao/mysql"
-	"github.com/007team/douyinapp/dao/redis"
-	"github.com/007team/douyinapp/services"
-	"github.com/007team/douyinapp/settings"
+	"github.com/007team/douyin-micro/user/dao/mysql"
+	"github.com/007team/douyin-micro/user/dao/redis"
+	"github.com/007team/douyin-micro/user/logic"
+	"github.com/007team/douyin-micro/user/services"
+	"github.com/007team/douyin-micro/user/settings"
+
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 
 )
-
+//protoc --proto_path=. --micro_out=. --go_out=. userService.proto
 func main() {
 	// 配置信息初始化
 	if err := settings.Init(); err != nil {
@@ -45,7 +46,7 @@ func main() {
 	// 结构命令行参数，初始化
 	microService.Init()
 	// 服务注册
-	_ = services.RegisterUserServiceHandler(microService.Server(), new(core.UserService))
+	_ = services.RegisterUserServiceHandler(microService.Server(), new(logic.UserService))
 	// 启动微服务
 	_ = microService.Run()
 }
