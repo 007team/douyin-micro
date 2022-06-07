@@ -1,0 +1,24 @@
+syntax="proto3";
+package services;
+option go_package="./;protos";
+
+message UserModel{
+  // @inject_tag: json:"id"
+  int64 Id=1;
+  // @inject_tag: json:"name"
+  string Name=2;
+  // @inject_tag: json:"follow_count"
+  int64 FollowCount=3;
+  // @inject_tag: json:"follower_count"
+  int64 FollowerCount=4;
+  // @inject_tag: json:"password"
+  string Password=5;
+  // @inject_tag: json:"is_follow"
+  bool IsFollow=6;
+  // @inject_tag: json:"salt"
+  string Salt=7;
+  // @inject_tag: json:"created_at"
+  int64 CreatedAt=8;
+  // @inject_tag: json:"updated_at"
+  int64 UpdatedAt=9;
+}
