@@ -1,0 +1,23 @@
+syntax="proto3";
+package services;
+import "userModels.proto";
+option go_package="./;protos";
+
+message Video {
+  // @inject_tag: json:"id"
+  int64 ID = 1;
+  // @inject_tag: json:"author"
+  User Author = 2;
+  // @inject_tag: json:"play_url"
+  string PlayUrl =3;
+  // @inject_tag: json:"cover_url"
+  string CoverUrl = 4;
+  // @inject_tag: json:"favorite_count"
+  int64 FavoriteCount =5;
+  // @inject_tag: json:"comment_count"
+  int64 CommentCount =6;
+  // @inject_tag: json:"is_favorite"
+  bool IsFavorite = 7;
+  // @inject_tag: json:"title"
+  string Title = 8;
+}
