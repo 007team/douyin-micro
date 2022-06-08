@@ -47,7 +47,7 @@ type UserService interface {
 	UserInfo(ctx context.Context, in *UserRequest, opts ...client.CallOption) (*UserResponse, error)
 	RelationAction(ctx context.Context, in *RelationActionRequest, opts ...client.CallOption) (*RelationActionResponse, error)
 	FollowList(ctx context.Context, in *FollowListRequest, opts ...client.CallOption) (*FollowListResponse, error)
-	FollowerList(ctx context.Context, in *FollowerListRequest, opts ...client.CallOption) (*FollowerListRequest, error)
+	FollowerList(ctx context.Context, in *FollowerListRequest, opts ...client.CallOption) (*FollowerListResponse, error)
 }
 
 type userService struct {
@@ -112,9 +112,9 @@ func (c *userService) FollowList(ctx context.Context, in *FollowListRequest, opt
 	return out, nil
 }
 
-func (c *userService) FollowerList(ctx context.Context, in *FollowerListRequest, opts ...client.CallOption) (*FollowerListRequest, error) {
+func (c *userService) FollowerList(ctx context.Context, in *FollowerListRequest, opts ...client.CallOption) (*FollowerListResponse, error) {
 	req := c.c.NewRequest(c.name, "UserService.FollowerList", in)
-	out := new(FollowerListRequest)
+	out := new(FollowerListResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -130,7 +130,7 @@ type UserServiceHandler interface {
 	UserInfo(context.Context, *UserRequest, *UserResponse) error
 	RelationAction(context.Context, *RelationActionRequest, *RelationActionResponse) error
 	FollowList(context.Context, *FollowListRequest, *FollowListResponse) error
-	FollowerList(context.Context, *FollowerListRequest, *FollowerListRequest) error
+	FollowerList(context.Context, *FollowerListRequest, *FollowerListResponse) error
 }
 
 func RegisterUserServiceHandler(s server.Server, hdlr UserServiceHandler, opts ...server.HandlerOption) error {
@@ -140,7 +140,7 @@ func RegisterUserServiceHandler(s server.Server, hdlr UserServiceHandler, opts .
 		UserInfo(ctx context.Context, in *UserRequest, out *UserResponse) error
 		RelationAction(ctx context.Context, in *RelationActionRequest, out *RelationActionResponse) error
 		FollowList(ctx context.Context, in *FollowListRequest, out *FollowListResponse) error
-		FollowerList(ctx context.Context, in *FollowerListRequest, out *FollowerListRequest) error
+		FollowerList(ctx context.Context, in *FollowerListRequest, out *FollowerListResponse) error
 	}
 	type UserService struct {
 		userService
@@ -173,6 +173,6 @@ func (h *userServiceHandler) FollowList(ctx context.Context, in *FollowListReque
 	return h.UserServiceHandler.FollowList(ctx, in, out)
 }
 
-func (h *userServiceHandler) FollowerList(ctx context.Context, in *FollowerListRequest, out *FollowerListRequest) error {
+func (h *userServiceHandler) FollowerList(ctx context.Context, in *FollowerListRequest, out *FollowerListResponse) error {
 	return h.UserServiceHandler.FollowerList(ctx, in, out)
 }

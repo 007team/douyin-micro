@@ -5,7 +5,9 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"github.com/007team/douyin-micro/user/dao/mysql"
+	"github.com/007team/douyin-micro/user/dao/redis"
 	"github.com/007team/douyin-micro/user/models"
+	"github.com/007team/douyin-micro/user/pkg/jwt"
 	"github.com/007team/douyin-micro/user/services"
 	"log"
 	"math/rand"
@@ -13,21 +15,24 @@ import (
 
 var letters = []byte("abcdefghjkmnpqrstuvwxyz123456789")
 
-//func BuildUser(item models.User) *services.UserModel {
-//	userModel := services.UserModel{
-//		Id: 				item.Id,
-//		Name:				item.Name,
-//		FollowCount:		item.FollowCount,
-//		FollowerCount:		item.FollowerCount,
-//		Password:			item.Password,
-//		IsFollow:			item.IsFollow,
-//		Salt:				item.Salt,
-//		CreatedAt:			item.CreatedAt.Unix(),
-//		UpdatedAt:			item.UpdatedAt.Unix(),
-//	}
-//	return &userModel
-//}
+func BuildUser(item models.User) *services.User {
+	userModel := services.User{
+		Id:            item.Id,
+		Name:          item.Name,
+		FollowCount:   item.FollowCount,
+		FollowerCount: item.FollowerCount,
+		IsFollow:      item.IsFollow,
+	}
+	return &userModel
+}
 
+func BuildUserList(item []models.User) []*services.User{
+	userlist := []*services.User{}
+	for _,user := range item{
+		userlist = append(userlist,BuildUser(user))
+	}
+	return userlist
+}
 
 func (s *UserService) Register(ctx context.Context, request *services.UserRegisterRequest, response *services.UserRegisterResponse) error {
 
@@ -38,7 +43,10 @@ func (s *UserService) Register(ctx context.Context, request *services.UserRegist
 
 	//先查询该用户是否存在， 如存在则直接返回错误
 	if err := mysql.CheckUserExist(user); err != nil {
-		return  err
+		response.StatusCode = 1
+		response.StatusMsg = "用户名已被注册"
+		log.Println(err)
+		return nil
 	}
 
 	// 对用户密码进行加密
@@ -53,12 +61,6 @@ func (s *UserService) Register(ctx context.Context, request *services.UserRegist
 		return  err
 	}
 
-	//// 生成 token
-	//token, _, err := jwt.GenToken(user.Id)
-	//if err != nil {
-	//	log.Fatalln("jwt.GenToken  生成token失败", err)
-	//	return  err
-	//}
 	response.StatusCode = 0
 	response.StatusMsg = "注册成功"
 	response.UserId = user.Id
@@ -88,15 +90,9 @@ func (s *UserService) Login(ctx context.Context, request *services.UserLoginRequ
 	if newPassword != user.Password {
 		response.StatusCode = 1
 		response.StatusMsg = "密码错误"
-		return mysql.ErrorInvalidUserPassword // 用户密码错误
+		log.Println("用户密码错误")// 用户密码错误
+		return nil
 	}
-	// 生成token
-	//token, _, err := jwt.GenToken(user.Id)
-	//if err != nil {
-	//	log.Fatalln("jwt,GenToken 生成token失败")
-	//	return err
-	//}
-
 	response.StatusCode = 0
 	response.StatusMsg = "登录成功"
 	response.UserId = user.Id
@@ -106,23 +102,62 @@ func (s *UserService) Login(ctx context.Context, request *services.UserLoginRequ
 }
 
 func (s *UserService) UserInfo(ctx context.Context, request *services.UserRequest, response *services.UserResponse) error {
-	panic("implement me")
+	m, _ := jwt.ParseToken(request.Token)
+	// 我的id
+	myId := m.UserID
+
+	user := models.User{
+		Id: request.UserId,
+	}
+	// mysql查询用户具体信息
+	if err := mysql.UserInfo(&user); err != nil {
+		log.Fatalln("mysql.UserInfo failed", err)
+		response.StatusCode = 1
+		response.StatusMsg = "服务器繁忙，请稍后再试"
+		return nil
+	}
+
+	// redis查询用户的粉丝与关注数
+	var err error
+	user.FollowCount, err = redis.UserFollowCount(user.Id)
+	if err != nil {
+		log.Println("redis.UserFollowCount(user.Id) failed", err)
+		response.StatusCode = 1
+		response.StatusMsg = "服务器繁忙，请稍后再试"
+		return nil
+	}
+	user.FollowerCount, err = redis.UserFollowerCount(user.Id)
+	if err != nil {
+		log.Println("redis.UserFollowerCount(user.Id) failed", err)
+		response.StatusCode = 1
+		response.StatusMsg = "服务器繁忙，请稍后再试"
+		return nil
+	}
+
+	// “我”是否关注了这个用户
+	user.IsFollow, err = redis.IsFollowUser(&user, myId)
+	if err != nil {
+		log.Println("redis.IsFollowUser(user, myUserId) failed", err)
+		response.StatusCode = 1
+		response.StatusMsg = "服务器繁忙，请稍后再试"
+		return nil
+	}
+
+	response.StatusCode = 0
+	response.StatusMsg = "操作成功"
+	response.User = BuildUser(user)
+
+	return nil
+
 }
 
 func (s *UserService) RelationAction(ctx context.Context, request *services.RelationActionRequest, response *services.RelationActionResponse) error {
 	panic("implement me")
 }
 
-func (s *UserService) FollowList(ctx context.Context, request *services.FollowListRequest, response *services.FollowListResponse) error {
-	panic("implement me")
-}
-
-func (s *UserService) FollowerList(ctx context.Context, request *services.FollowerListRequest, request2 *services.FollowerListRequest) error {
-	panic("implement me")
-}
-
-
-
+//func (s *UserService) FollowList(ctx context.Context, request *services.FollowListRequest, response *services.FollowListResponse) error {
+//	panic("implement me")
+//}
 
 
 

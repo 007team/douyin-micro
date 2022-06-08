@@ -33,8 +33,8 @@ func NewRouter(service ...interface{}) *gin.Engine{
 	//
 	//// extra apis - II
 	//apiRouter.POST("/relation/action/", middlewares.JWTAuthMiddleware(), handlers.RelationAction)
-	//apiRouter.GET("/relation/follow/list/", middlewares.JWTAuthMiddleware(), handlers.FollowList)
-	//apiRouter.GET("/relation/follower/list/", handlers.JWTAuthMiddleware(), controller.FollowerList)
+	apiRouter.GET("/relation/follow/list/", middlewares.JWTAuthMiddleware(), handlers.FollowList)
+	apiRouter.GET("/relation/follower/list/", middlewares.JWTAuthMiddleware(), handlers.FollowerList)
 
 	return r
 }
