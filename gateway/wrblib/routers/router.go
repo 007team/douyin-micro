@@ -18,23 +18,23 @@ func NewRouter(service ...interface{}) *gin.Engine{
 	apiRouter := r.Group("/douyin")
 
 	//// basic apis
-	//apiRouter.GET("/feed/", middlewares.JWTAuthMiddlewareForFeed(), controller.Feed)
+	//apiRouter.GET("/feed/", middlewares.JWTAuthMiddlewareForFeed(), handlers.Feed)
 	apiRouter.POST("/user/register/", handlers.Register)
-	//apiRouter.POST("/user/login/", controller.Login)
-	//apiRouter.GET("/user/", middlewares.JWTAuthMiddleware(), controller.UserInfo)
-	//apiRouter.POST("/publish/action/", middlewares.JWTAuthMiddlewareForPublish(), controller.Publish)
-	//apiRouter.GET("/publish/list/", middlewares.JWTAuthMiddleware(), controller.PublishList)
+	apiRouter.POST("/user/login/", handlers.Login)
+	apiRouter.GET("/user/", middlewares.JWTAuthMiddleware(), handlers.UserInfo)
+	//apiRouter.POST("/publish/action/", middlewares.JWTAuthMiddlewareForPublish(), handlers.Publish)
+	//apiRouter.GET("/publish/list/", middlewares.JWTAuthMiddleware(), handlers.PublishList)
 	//
 	//// extra apis - I
-	//apiRouter.POST("/favorite/action/", middlewares.JWTAuthMiddleware(), controller.FavoriteAction)
-	//apiRouter.GET("/favorite/list/", middlewares.JWTAuthMiddleware(), controller.FavoriteList)
-	//apiRouter.POST("/comment/action/", middlewares.JWTAuthMiddleware(), controller.CommentAction)
-	//apiRouter.GET("/comment/list/", middlewares.JWTAuthMiddleware(), controller.CommentList)
+	//apiRouter.POST("/favorite/action/", middlewares.JWTAuthMiddleware(), handlers.FavoriteAction)
+	//apiRouter.GET("/favorite/list/", middlewares.JWTAuthMiddleware(), handlers.FavoriteList)
+	//apiRouter.POST("/comment/action/", middlewares.JWTAuthMiddleware(), handlers.CommentAction)
+	//apiRouter.GET("/comment/list/", middlewares.JWTAuthMiddleware(), handlers.CommentList)
 	//
 	//// extra apis - II
-	//apiRouter.POST("/relation/action/", middlewares.JWTAuthMiddleware(), controller.RelationAction)
-	//apiRouter.GET("/relation/follow/list/", middlewares.JWTAuthMiddleware(), controller.FollowList)
-	//apiRouter.GET("/relation/follower/list/", middlewares.JWTAuthMiddleware(), controller.FollowerList)
+	//apiRouter.POST("/relation/action/", middlewares.JWTAuthMiddleware(), handlers.RelationAction)
+	//apiRouter.GET("/relation/follow/list/", middlewares.JWTAuthMiddleware(), handlers.FollowList)
+	//apiRouter.GET("/relation/follower/list/", handlers.JWTAuthMiddleware(), controller.FollowerList)
 
 	return r
 }

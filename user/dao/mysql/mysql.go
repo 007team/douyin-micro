@@ -5,13 +5,13 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/007team/douyinapp/models"
+	"github.com/007team/douyin-micro/user/models"
+	"github.com/007team/douyin-micro/user/settings"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
 
-	"github.com/007team/douyinapp/settings"
 )
 
 // 对mysql进行操作时，用db这个变量来操作数据库
