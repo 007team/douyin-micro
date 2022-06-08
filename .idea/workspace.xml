@@ -5,42 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dc9af9b-c10d-4b31-b641-8ca390cd8cc5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/comment.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/pkg.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/dao/mysql/errCode.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/dao/redis/keys.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/dao/redis/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/pkg/jwt/jwt.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/video/conf/conf.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/microDouyinapp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/conf/conf.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/conf/conf.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/dao/mysql/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/redis/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/logic/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/userService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/services/protos/userModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/user/services/protos/userModels.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/services/protos/userService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/user/services/protos/userService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/services/userModels.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/services/userModels.pb.micro.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/services/userservice.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/services/userservice.pb.micro.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/services/protos/userModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/userModels.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/services/protos/videoModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoModels.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/services/protos/videoService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
