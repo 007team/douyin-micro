@@ -1,8 +1,4 @@
-package core
+package logic
 
 type UserService struct {
-
 }
-
-
-

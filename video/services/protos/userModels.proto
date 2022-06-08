@@ -2,7 +2,6 @@ syntax="proto3";
 package services;
 option go_package="./;protos";
 
-
 message User{
   // @inject_tag: json:"id"
   int64 Id = 1;
@@ -15,5 +14,3 @@ message User{
   // @inject_tag: json:"is_follow"
   bool IsFollow = 5;
 }
-
-
