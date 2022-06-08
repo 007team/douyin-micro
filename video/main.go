@@ -1,9 +1,10 @@
 package main
 
 import (
-	"douyin-micro/user/conf"
-	"douyin-micro/user/logic"
-	"douyin-micro/user/services"
+	"github.com/007team/douyin-micro/video/conf"
+	"github.com/007team/douyin-micro/video/logic"
+	"github.com/007team/douyin-micro/video/services"
+	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 )

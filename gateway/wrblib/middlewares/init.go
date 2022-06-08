@@ -11,8 +11,8 @@ func InitMiddleware(service []interface{}) gin.HandlerFunc {
 		// 将实例存在gin.Keys中
 		context.Keys = make(map[string]interface{})
 		context.Keys["userService"] = service[0]
-		context.Keys["videoService"] = service[1]
-		context.Keys["commentService"] = service[2]
+		//context.Keys["videoService"] = service[1]
+		//context.Keys["commentService"] = service[2]
 		context.Next()
 	}
 }
@@ -21,10 +21,10 @@ func InitMiddleware(service []interface{}) gin.HandlerFunc {
 func ErrorMiddleware() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		defer func() {
-			if r := recover();r!=nil{
-				context.JSON(200,gin.H{
-					"code":404,
-					"msg":fmt.Sprintf("%s",r),
+			if r := recover(); r != nil {
+				context.JSON(200, gin.H{
+					"code": 404,
+					"msg":  fmt.Sprintf("%s", r),
 				})
 				context.Abort()
 			}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4dc9af9b-c10d-4b31-b641-8ca390cd8cc5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/comment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/pkg.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/response.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/dao/mysql/errCode.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/dao/redis/keys.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/dao/redis/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/pkg/jwt/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/conf/conf.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/microDouyinapp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/conf/conf.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/conf/conf.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/logic/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/userService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/protos/userModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/user/services/protos/userModels.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/protos/userService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/user/services/protos/userService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/userModels.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/userModels.pb.micro.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/userservice.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/userservice.pb.micro.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/protos/userModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/userModels.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/protos/videoModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoModels.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/protos/videoService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoService.proto" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://C:/Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/gateway/go.mod" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gateway/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gateway/wrblib/routers/router.go" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AHLUwd72W0pUYjEetrcixDo9m4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable..is.expanded" value="false" />
+    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
+    <property name="go.format.on.save.advertiser.fired" value="true" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GO_WORK\src\douyin-micro\user" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GO_WORK\src\douyin-micro\user\services" />
+      <recent name="D:\GO_WORK\src\douyin-micro\gateway\services" />
+      <recent name="D:\GO_WORK\src\douyin-micro\video\services" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="go build github.com/007team/douyin-micro/user" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="douyin-micro" />
+      <working_directory value="$PROJECT_DIR$/user" />
+      <go_parameters value="--registry=etcd --registry_address=127.0.0.1:2379" />
+      <kind value="PACKAGE" />
+      <package value="github.com/007team/douyin-micro/user" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/user/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/007team/douyin-micro/user" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+</project>

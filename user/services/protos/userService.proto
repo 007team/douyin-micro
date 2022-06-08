@@ -6,18 +6,18 @@ option go_package ="./;protos";
 // 用户注册
 message UserRegisterRequest{
   // @inject_tag: json:"user_name" from:"user_name" uri:"user_name"
-  string Username = 1;
+  string username = 1;
   // @inject_tag: json:"password" from:"password" uri:"password"
-  string  Password = 2;
+  string  password = 2;
 }
 
 message UserRegisterResponse{
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"user_id"
-  int64 UserId = 3;
+  int64 user_id = 3;
   // @inject_tag: json:"token"
   string token = 4;
 
@@ -25,19 +25,19 @@ message UserRegisterResponse{
 
 // 用户登录
 message UserLoginRequest{
-  // @inject_tag: json:"user_name" from:"user_name" uri:"user_name"
-  string Username = 1;
+  // @inject_tag: json:"username" from:"username" uri:"username"
+  string username = 1;
   // @inject_tag: json:"password" from:"password" uri:"password"
-  string  Password = 2;
+  string  password = 2;
 }
 
 message UserLoginResponse{
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"user_id"
-  int64 UserId = 3;
+  int64 user_id = 3;
   // @inject_tag: json:"token"
   string token = 4;
 }
@@ -45,70 +45,71 @@ message UserLoginResponse{
 // 用户信息
 message UserRequest{
   // @inject_tag: json:"user_id" from:"user_id" uri:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token" from:"token" uri:"token"
-  string  Token =2;
+  string  token =2;
 }
 
 message UserResponse{
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"user"
-  User User = 3;
+  User user = 3;
 }
 
 // 关注，粉丝
 // 关注，取消关注
 message RelationActionRequest{
   // @inject_tag: json:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token"
-  string Token = 2;
+  string token = 2;
   // @inject_tag: json:"to_user_id"
-  int64 ToUserId = 3;
+  int64 to_user_id = 3;
   // @inject_tag: json:"action_type"
-  int32 ActionType = 4;
+  int32 action_type = 4;
 }
 message RelationActionResponse{
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
+  // @inject_tag: json:"user_list"
 }
 
 
 // 关注列表
 message FollowListRequest{
   // @inject_tag: json:"user_id" from:"user_id" uri:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token" from:"token" uri:"token"
-  string  Token =2;
+  string  token = 2;
 }
 message FollowListResponse{
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"user_list"
-  repeated User UserList = 3;
+  repeated User user_list = 3;
 }
 
 // 粉丝列表
 message FollowerListRequest{
   // @inject_tag: json:"user_id" from:"user_id" uri:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token" from:"token" uri:"token"
-  string  Token =2;
+  string  token = 2;
 }
 message FollowerListResponse{
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"user_list"
-  repeated User UserList = 3;
+  repeated User user_list = 3;
 }
 
 service UserService{
@@ -117,6 +118,6 @@ service UserService{
   rpc UserInfo(UserRequest) returns(UserResponse);
   rpc RelationAction(RelationActionRequest) returns(RelationActionResponse);
   rpc FollowList(FollowListRequest) returns(FollowListResponse);
-  rpc FollowerList(FollowerListRequest) returns(FollowerListRequest);
+  rpc FollowerList(FollowerListRequest) returns(FollowerListResponse);
 
 }

@@ -1,7 +1,6 @@
 syntax="proto3";
 package services;
-
-import "videoModels.proto";
+import "videoModels.protos";
 option go_package="./;protos";
 
 /*
@@ -9,19 +8,19 @@ option go_package="./;protos";
  */
 message VideoFeedRequest {
   // @inject_tag: json:"latest_time"
-  int64 LatestTime =1;
+  int64 latest_time =1;
   // @inject_tag: json:"token"
-  string Token =2;
+  string token =2;
 }
 message VideoFeedResponse {
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"video_list"
-  repeated Video VideoList = 3;
+  repeated Video video_list = 3;
   // @inject_tag: json:"next_time"
-  int64 NextTime = 4;
+  int64 next_time = 4;
 }
 
 
@@ -30,17 +29,17 @@ message VideoFeedResponse {
  */
 message VideoPublishActionRequest {
   // @inject_tag: json:"token"
-  string Token =1;
+  string token =1;
   // @inject_tag: json:"data"
-  bytes Data =2;
+  bytes data =2;
   // @inject_tag: json:"title"
-  string Title =3;
+  string title =3;
 }
 message VideoPublishActionResponse {
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
 }
 
 /*
@@ -48,17 +47,17 @@ message VideoPublishActionResponse {
  */
 message VideoPublishListRequest {
   // @inject_tag: json:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token"
-  string Token =2;
+  string token =2;
 }
 message VideoPublishListResponse {
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"video_list"
-  repeated Video VideoList = 3;
+  repeated Video video_list = 3;
 }
 
 /*
@@ -66,19 +65,19 @@ message VideoPublishListResponse {
  */
 message VideoFavoriteActionRequest {
   // @inject_tag: json:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token"
-  string Token = 2;
+  string token = 2;
   // @inject_tag: json:"video_id"
-  int64 VideoId = 3;
+  int64 video_id = 3;
   // @inject_tag: json:"action_type"
-  int32 ActionType =4;
+  int32 action_type =4;
 }
 message VideoFavoriteActionResponse {
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
 }
 
 /*
@@ -86,17 +85,17 @@ message VideoFavoriteActionResponse {
  */
 message VideoFavoriteListRequest {
   // @inject_tag: json:"user_id"
-  int64 UserId = 1;
+  int64 user_id = 1;
   // @inject_tag: json:"token"
-  string Token =2;
+  string token =2;
 }
 message VideoFavoriteListResponse {
   // @inject_tag: json:"status_code"
-  int32 StatusCode = 1;
+  int32 status_code = 1;
   // @inject_tag: json:"status_msg"
-  string StatusMsg = 2;
+  string status_msg = 2;
   // @inject_tag: json:"video_list"
-  repeated Video VideoList =3;
+  repeated Video video_list =3;
 }
 
 service VideoService{

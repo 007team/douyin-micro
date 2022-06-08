@@ -5,18 +5,17 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/007team/douyinapp/models"
+	"github.com/007team/douyin-micro/user/models"
 
+	"github.com/007team/douyin-micro/user/settings"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
-
-	"github.com/007team/douyinapp/settings"
 )
 
 // 对mysql进行操作时，用db这个变量来操作数据库
 
-var Db *gorm.DB
+var db *gorm.DB
 
 func Init(cfg *settings.MySQLConfig) (err error) {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
@@ -26,7 +25,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 		cfg.Port,
 		cfg.DbName,
 	)
-	Db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
+	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
 		DisableForeignKeyConstraintWhenMigrating: true,
 	})
 
@@ -34,10 +33,10 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 		fmt.Println("mysql Open failed", err)
 	}
 
-	sqlDB, err := Db.DB()
+	sqlDB, err := db.DB()
 
-	err = Db.AutoMigrate(&models.User{})
-	if err!=nil{
+	err = db.AutoMigrate(&models.User{})
+	if err != nil {
 		log.Println(err)
 	}
 	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
@@ -45,7 +44,6 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 
 	// SetMaxOpenConns 设置打开数据库连接的最大数量。
 	sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
-
 
 	return err
 }

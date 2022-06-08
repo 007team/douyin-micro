@@ -2,10 +2,12 @@ package conf
 
 import (
 	"fmt"
-	"github.com/007team/douyin-micro/settings"
+	"github.com/007team/douyin-micro/user/dao/mysql"
+	"github.com/007team/douyin-micro/user/dao/redis"
+	"github.com/007team/douyin-micro/user/settings"
 )
 
-func init() {
+func Init() {
 	// 配置信息初始化
 	if err := settings.Init(); err != nil {
 		fmt.Println("settings init failed", err)

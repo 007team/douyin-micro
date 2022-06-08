@@ -1,23 +1,23 @@
 syntax="proto3";
 package services;
-import "userModels.proto";
+import "userModels.protos";
 option go_package="./;protos";
 
 message Video {
   // @inject_tag: json:"id"
-  int64 ID = 1;
+  int64 id = 1;
   // @inject_tag: json:"author"
-  User Author = 2;
+  User author = 2;
   // @inject_tag: json:"play_url"
-  string PlayUrl =3;
+  string play_url =3;
   // @inject_tag: json:"cover_url"
-  string CoverUrl = 4;
+  string cover_url = 4;
   // @inject_tag: json:"favorite_count"
-  int64 FavoriteCount =5;
+  int64 favorite_coun =5;
   // @inject_tag: json:"comment_count"
-  int64 CommentCount =6;
+  int64 comment_count =6;
   // @inject_tag: json:"is_favorite"
-  bool IsFavorite = 7;
+  bool is_favorite = 7;
   // @inject_tag: json:"title"
-  string Title = 8;
+  string title = 8;
 }
