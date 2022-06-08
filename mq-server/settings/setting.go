@@ -21,6 +21,7 @@ type multipleConfig struct {
 	*AppConfig   `mapstructure:"app"`
 	*MySQLConfig `mapstructure:"mysql"`
 	*RedisConfig `mapstructure:"redis"`
+	*RabbitmqConfig `mapstructure:"rabbitmq"`
 }
 
 // app 的配置信息

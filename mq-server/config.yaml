@@ -23,8 +23,8 @@ redis:
   pool_size: 100
 
 rabbitmq:
-  rabbitmq: amqp
-  rabbitmquser: guest
-  rebbitmqpassword: guest
-  rabbitmqhost: localhost
-  rabbitmqport: 5672
+  rabbitmq: "amqp"
+  rabbitmq_user: "guest"
+  rabbitmq_password: "guest"
+  rabbitmq_host: "localhost"
+  rabbitmq_port: 5672
