@@ -1,10 +1,11 @@
 package routers
 
 import (
-	"github.com/gin-gonic/gin"
-	"microDouyinapp/gateway/wrblib/middlewares"
+	"github.com/007team/douyin-micro/gateway/wrblib/handlers"
+	"github.com/007team/douyin-micro/gateway/wrblib/middlewares"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
+	"github.com/gin-gonic/gin"
 )
 
 func NewRouter(service ...interface{}) *gin.Engine{
@@ -14,11 +15,11 @@ func NewRouter(service ...interface{}) *gin.Engine{
 	r.Use(middlewares.Cors(), middlewares.InitMiddleware(service), middlewares.ErrorMiddleware())
 	store := cookie.NewStore([]byte("something-very-secret"))
 	r.Use(sessions.Sessions("mysession", store))
-	//apiRouter := r.Group("/douyin")
-	//
+	apiRouter := r.Group("/douyin")
+
 	//// basic apis
 	//apiRouter.GET("/feed/", middlewares.JWTAuthMiddlewareForFeed(), controller.Feed)
-	//apiRouter.POST("/user/register/", controller.Register)
+	apiRouter.POST("/user/register/", handlers.Register)
 	//apiRouter.POST("/user/login/", controller.Login)
 	//apiRouter.GET("/user/", middlewares.JWTAuthMiddleware(), controller.UserInfo)
 	//apiRouter.POST("/publish/action/", middlewares.JWTAuthMiddlewareForPublish(), controller.Publish)

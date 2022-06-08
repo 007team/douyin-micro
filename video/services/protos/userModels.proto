@@ -5,13 +5,13 @@ option go_package="./;protos";
 
 message User{
   // @inject_tag: json:"id"
-  int64 Id = 1;
+  int64 id = 1;
   // @inject_tag: json:"name"
-  string Name = 2;
+  string name = 2;
   // @inject_tag: json:"follow_count"
-  int64 FollowCount = 3;
+  int64 follow_count = 3;
   // @inject_tag: json:"follower_count"
-  int64 FollowerCount = 4;
+  int64 follower_count = 4;
   // @inject_tag: json:"is_follow"
-  bool IsFollow = 5;
+  bool is_follow = 5;
 }
