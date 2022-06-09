@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.0
 // 	protoc        v3.15.5
-// source: userModels.protos
+// source: userModels.proto
 
 package services
 

@@ -45,5 +45,7 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	// SetMaxOpenConns 设置打开数据库连接的最大数量。
 	sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
 
+	db.AutoMigrate(&models.User{})
+
 	return err
 }

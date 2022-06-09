@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/007team/douyinapp/settings"
+	"github.com/007team/douyin-micro/video/settings"
 	"github.com/go-redis/redis"
 )
 

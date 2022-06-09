@@ -5,10 +5,12 @@ import (
 	"github.com/007team/douyin-micro/gateway/wrappers"
 	"github.com/007team/douyin-micro/gateway/wrblib/routers"
 	"github.com/micro/go-micro/v2"
+
 	//"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-micro/v2/web"
+
 	//"microDouyinapp/gateway/wrappers"
 	"time"
 )
@@ -28,12 +30,12 @@ func main() {
 	userService := services.NewUserService("rpcUserService", userMicroService.Client())
 
 	// video
-	//videoMicroService := micro.NewService(
-	//	micro.Name("taskService.client"),
-	//	micro.WrapClient(wrappers.NewVideoWrapper),
-	//)
+	videoMicroService := micro.NewService(
+		micro.Name("videoService.client"),
+		micro.WrapClient(wrappers.NewVideoWrapper),
+	)
 	// video服务调用实例
-	//taskService := services.NewTaskService("rpcTaskService",taskMicroService.Client())
+	videoService := services.NewVideoService("rpcVideoService", videoMicroService.Client())
 
 	// comment
 	//commentMicroService := micro.NewService(
@@ -48,7 +50,7 @@ func main() {
 		web.Name("httpService"),
 		web.Address("192.168.109.1:4000"),
 		//将服务调用实例使用gin处理
-		web.Handler(routers.NewRouter(userService)),
+		web.Handler(routers.NewRouter(userService, videoService)),
 		web.Registry(etcdReg),
 		web.RegisterTTL(time.Second*30),
 		web.RegisterInterval(time.Second*15),

@@ -86,11 +86,11 @@ type UserRegisterResponse struct {
 	// @inject_tag: json:"status_code"
 	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_id"
-	UserId int64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	UserId int64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	// @inject_tag: json:"token"
-	Token string `protobuf:"bytes,4,opt,name=token,proto3" json:"token"`
+	Token string `protobuf:"bytes,4,opt,name=token,proto3" json:"token,omitempty"`
 }
 
 func (x *UserRegisterResponse) Reset() {
@@ -219,11 +219,11 @@ type UserLoginResponse struct {
 	// @inject_tag: json:"status_code"
 	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_id"
-	UserId int64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	UserId int64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	// @inject_tag: json:"token"
-	Token string `protobuf:"bytes,4,opt,name=token,proto3" json:"token"`
+	Token string `protobuf:"bytes,4,opt,name=token,proto3" json:"token,omitempty"`
 }
 
 func (x *UserLoginResponse) Reset() {
@@ -352,9 +352,9 @@ type UserResponse struct {
 	// @inject_tag: json:"status_code"
 	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user"
-	User *User `protobuf:"bytes,3,opt,name=user,proto3" json:"user"`
+	User *User `protobuf:"bytes,3,opt,name=user,proto3" json:"user,omitempty"`
 }
 
 func (x *UserResponse) Reset() {
@@ -495,7 +495,7 @@ type RelationActionResponse struct {
 	// @inject_tag: json:"status_code"
 	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"` // @inject_tag: json:"user_list"
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"` // @inject_tag: json:"user_list"
 }
 
 func (x *RelationActionResponse) Reset() {
@@ -610,9 +610,9 @@ type FollowListResponse struct {
 	// @inject_tag: json:"status_code"
 	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_list"
-	UserList []*User `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list"`
+	UserList []*User `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
 }
 
 func (x *FollowListResponse) Reset() {
@@ -734,9 +734,9 @@ type FollowerListResponse struct {
 	// @inject_tag: json:"status_code"
 	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_list"
-	UserList []*User `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list"`
+	UserList []*User `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
 }
 
 func (x *FollowerListResponse) Reset() {

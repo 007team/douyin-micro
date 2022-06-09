@@ -1,6 +1,6 @@
 syntax="proto3";
 package services;
-import "userModels.protos";
+import "userModels.proto";
 option go_package="./;protos";
 
 message Video {
@@ -13,7 +13,7 @@ message Video {
   // @inject_tag: json:"cover_url"
   string cover_url = 4;
   // @inject_tag: json:"favorite_count"
-  int64 favorite_coun =5;
+  int64 favorite_count =5;
   // @inject_tag: json:"comment_count"
   int64 comment_count =6;
   // @inject_tag: json:"is_favorite"

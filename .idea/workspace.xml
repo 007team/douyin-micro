@@ -4,8 +4,57 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc9af9b-c10d-4b31-b641-8ca390cd8cc5" name="Changes" comment="">
+    <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/relation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/dao/mysql/relation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/dao/redis/relation.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/logic/relationService.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/dao/mysql/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/dao/qiniu/qiniu.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/dao/redis/keys.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/dao/redis/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/logic/pkg.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/models/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/pkg/jwt/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/settings/setting.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/protos/videoModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/protos/videoModels.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/userModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userModels.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/userModels.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/userService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userService.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/userService.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/videoModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/videoModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/videoModels.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/videoModels.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/videoService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/videoService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/videoService.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/videoService.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrappers/videoWrapper.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrappers/videoWrapper.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/logic/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/userService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/userService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/services/userService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user.exe" beforeDir="false" afterPath="$PROJECT_DIR$/user/user.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/conf/conf.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/conf/conf.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/video/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/protos/videoModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoModels.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/protos/videoService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/userModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/userModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/userModels.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/userModels.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/videoModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/videoModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/videoModels.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/videoModels.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/videoService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/videoService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/videoService.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/videoService.pb.micro.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +72,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/gateway/go.mod" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/gateway/main.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/gateway/wrblib/routers/router.go" root0="FORCE_HIGHLIGHTING" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2AHLUwd72W0pUYjEetrcixDo9m4" />
+  <component name="ProjectId" id="2AIRfH8BZg8kizi4U2hCqnFwUgl" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,43 +93,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="configurable..is.expanded" value="false" />
-    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
     <property name="go.format.on.save.advertiser.fired" value="true" />
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/video/dao/redis" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\GO_WORK\src\douyin-micro\user" />
+      <recent name="D:\GO_WORK\src\douyin-micro\video\dao\redis" />
+      <recent name="D:\GO_WORK\src\douyin-micro\video" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GO_WORK\src\douyin-micro\user\services" />
       <recent name="D:\GO_WORK\src\douyin-micro\gateway\services" />
       <recent name="D:\GO_WORK\src\douyin-micro\video\services" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="go build github.com/007team/douyin-micro/user" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="douyin-micro" />
-      <working_directory value="$PROJECT_DIR$/user" />
-      <go_parameters value="--registry=etcd --registry_address=127.0.0.1:2379" />
-      <kind value="PACKAGE" />
-      <package value="github.com/007team/douyin-micro/user" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/user/main.go" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go Build.go build github.com/007team/douyin-micro/user" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

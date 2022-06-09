@@ -3,14 +3,18 @@ package logic
 import (
 	"context"
 	"crypto/md5"
+	"crypto/rand"
 	"encoding/hex"
+	"log"
+
 	"github.com/007team/douyin-micro/user/dao/mysql"
 	"github.com/007team/douyin-micro/user/dao/redis"
 	"github.com/007team/douyin-micro/user/models"
 	"github.com/007team/douyin-micro/user/pkg/jwt"
 	"github.com/007team/douyin-micro/user/services"
-	"log"
 )
+
+var letters = []byte("abcdefghjkmnpqrstuvwxyz123456789")
 
 func BuildUser(item models.User) *services.User {
 	userModel := services.User{
@@ -21,6 +25,14 @@ func BuildUser(item models.User) *services.User {
 		IsFollow:      item.IsFollow,
 	}
 	return &userModel
+}
+
+func BuildUserList(item []models.User) []*services.User {
+	userlist := []*services.User{}
+	for _, user := range item {
+		userlist = append(userlist, BuildUser(user))
+	}
+	return userlist
 }
 
 func (*UserService) Login(ctx context.Context, req *services.UserLoginRequest, resp *services.UserLoginResponse) error {
@@ -63,6 +75,37 @@ func (*UserService) Login(ctx context.Context, req *services.UserLoginRequest, r
 }
 
 func (s *UserService) Register(ctx context.Context, request *services.UserRegisterRequest, response *services.UserRegisterResponse) error {
+
+	user := &models.User{
+		Name:     request.Username,
+		Password: request.Password,
+	}
+
+	//先查询该用户是否存在， 如存在则直接返回错误
+	if err := mysql.CheckUserExist(user); err != nil {
+		response.StatusCode = 1
+		response.StatusMsg = "用户名已被注册"
+		log.Println(err)
+		return nil
+	}
+
+	// 对用户密码进行加密
+	salt := RandLow()          //生成 salt
+	oPassword := user.Password // 旧的密码
+	newPassword := encryptPassword(oPassword, string(salt))
+	user.Salt = string(salt) // 保存salt
+	user.Password = newPassword
+
+	// 插入新用户
+	if err := mysql.CreateNewUser(user); err != nil {
+		return err
+	}
+
+	response.StatusCode = 0
+	response.StatusMsg = "注册成功"
+	response.UserId = user.Id
+	//response.Token = token
+
 	return nil
 }
 
@@ -119,16 +162,26 @@ func (s *UserService) RelationAction(ctx context.Context, request *services.Rela
 	return nil
 }
 
-func (s *UserService) FollowList(ctx context.Context, request *services.FollowListRequest, response *services.FollowListResponse) error {
-	return nil
-}
-
-func (s *UserService) FollowerList(ctx context.Context, request *services.FollowerListRequest, response *services.FollowerListResponse) error {
-	return nil
-}
-
 func encryptPassword(oPassword string, salt string) string {
 	h := md5.New()
 	h.Write([]byte(salt))
 	return hex.EncodeToString(h.Sum([]byte(oPassword)))
+}
+
+// RandLow 生成加密密码用的随机字符串  salt
+func RandLow() []byte {
+	n := 15
+	if n <= 0 {
+		return []byte{}
+	}
+	b := make([]byte, n)
+	arc := uint8(0)
+	if _, err := rand.Read(b[:]); err != nil {
+		return []byte{}
+	}
+	for i, x := range b {
+		arc = x & 31
+		b[i] = letters[arc]
+	}
+	return b
 }

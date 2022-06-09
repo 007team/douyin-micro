@@ -85,7 +85,7 @@ type VideoFeedResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"video_list"
@@ -228,7 +228,7 @@ type VideoPublishActionResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 }
@@ -344,7 +344,7 @@ type VideoPublishListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"video_list"
@@ -487,7 +487,7 @@ type VideoFavoriteActionResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 }
@@ -603,7 +603,7 @@ type VideoFavoriteListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"video_list"

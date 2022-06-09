@@ -1,6 +1,6 @@
 syntax="proto3";
 package services;
-import "videoModels.protos";
+import "videoModels.proto";
 option go_package="./;protos";
 
 /*

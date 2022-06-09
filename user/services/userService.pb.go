@@ -84,7 +84,7 @@ type UserRegisterResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_id"
@@ -217,7 +217,7 @@ type UserLoginResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_id"
@@ -350,7 +350,7 @@ type UserResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user"
@@ -493,7 +493,7 @@ type RelationActionResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"` // @inject_tag: json:"user_list"
 }
@@ -608,7 +608,7 @@ type FollowListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_list"
@@ -732,7 +732,7 @@ type FollowerListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"user_list"
