@@ -28,7 +28,7 @@ func NewRouter(service ...interface{}) *gin.Engine{
 	//// extra apis - I
 	//apiRouter.POST("/favorite/action/", middlewares.JWTAuthMiddleware(), handlers.FavoriteAction)
 	//apiRouter.GET("/favorite/list/", middlewares.JWTAuthMiddleware(), handlers.FavoriteList)
-	//apiRouter.POST("/comment/action/", middlewares.JWTAuthMiddleware(), handlers.CommentAction)
+	apiRouter.POST("/comment/action/", middlewares.JWTAuthMiddleware(), handlers.CommentAction)
 	//apiRouter.GET("/comment/list/", middlewares.JWTAuthMiddleware(), handlers.CommentList)
 	//
 	//// extra apis - II
