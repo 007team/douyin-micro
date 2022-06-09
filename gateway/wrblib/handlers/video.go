@@ -39,7 +39,7 @@ func Publish(c *gin.Context) {
 		log.Println("c.Get(\"user_id\")")
 		return
 	}
-	title := c.Query("title")
+	title := c.PostForm("title")
 
 	// 获取视频数据
 	data, err := c.FormFile("data")
@@ -56,7 +56,7 @@ func Publish(c *gin.Context) {
 		return
 	}
 	//  生成缩略图 （视频封面）
-	coverFileName := "cover==" + fileName
+	coverFileName := "cover==" + fileName + ".jpeg"
 	snapshotName, err := util.GetSnapshot(VideoPath, fileName, ImgPath, 1)
 	if err != nil {
 		fmt.Println("缩略图生成失败", err)

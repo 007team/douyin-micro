@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gateway/pkg/qiniu/qiniu.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/pkg/util/util.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/videoImgUpload.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/services/protos/videoService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/protos/videoService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/services/videoService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/services/videoService.pb.micro.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/dao/mysql/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/video.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/dao/qiniu/qiniu.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/qiniu/qiniu.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/dao/redis/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/video.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/services/protos/videoService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/protos/videoService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/services/videoService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/services/videoService.pb.micro.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/video.exe" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
