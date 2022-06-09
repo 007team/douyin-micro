@@ -1,24 +1,33 @@
 package mysql
 
 import (
+	"errors"
 	"github.com/007team/douyin-micro/comment/models"
 	"log"
 )
 
 // 获取评论列表
-func GetCommentList(videoId int64) (CommentList []models.Comment) {
+func GetCommentList(videoId int64) (CommentList []models.Comment,err error ){
 
-	err := Db.Preload("User").Where("video_id = ?", videoId).Order("updated_at DESC").Find(&CommentList).Error
+	err = Db.Preload("User").Where("video_id = ?", videoId).Order("updated_at DESC").Find(&CommentList).Error
 	if err != nil {
 		log.Println("dao.GetCommentList error:", err)
 	}
-	return
+	return CommentList,nil
 }
 
 // 增加评论
 func AddComment(comment *models.Comment) (err error) {
 	if err = Db.Preload("User").Create(comment).Error; err != nil {
 		log.Println("mysql.comment.Addcomment error", err)
+		return err
+	}
+	return nil
+}
+
+func FindCommentUser(comment *models.Comment) (err error){
+	if err = Db.Preload("User").Where("id = ?", comment.Id).First(&comment).Error; err!=nil{
+		log.Println("mysql.comment.FindCommentUser error", err)
 		return err
 	}
 	return nil
@@ -46,6 +55,19 @@ func DelComment(comment *models.Comment) (err error) {
 	return nil
 }
 
+// 判断评论是否属于该用户
+func CheckUser(comment *models.Comment,userId int64) (err error){
+	if err = Db.Where("id = ?", comment.Id).First(comment).Error;err!=nil{
+		log.Println("mysql.comment.CheckUser error", err)
+		return err
+	}
+
+	if userId != comment.UserId{
+		log.Println(userId, comment.UserId)
+		return errors.New("userId != toUserId")
+	}
+	return nil
+}
 
 // 减少视频评论数
 //func SubVideoCommentCount(videoId int64) (err error) {

@@ -9,6 +9,52 @@ import (
 	"strconv"
 )
 
+// 关注操作
+func RelationAction(c *gin.Context){
+	var relationActionReq services.RelationActionRequest
+
+	userId, ok := c.Get("user_id") // 用户id
+	if !ok {
+		log.Println(`c.Get("user_id") failed`)
+		return
+	}
+
+	toUserIdStr := c.Query("to_user_id")    // 对方用户id
+	actionTypeStr := c.Query("action_type") // 1-关注 2-取消关注
+
+	toUserId, err := strconv.ParseInt(toUserIdStr, 10, 64)
+	if err != nil {
+		log.Println("toUserIdStr Atoi failed", err)
+		return
+	}
+	actionType, err := strconv.ParseInt(actionTypeStr, 10, 64)
+	if err != nil {
+		log.Println("action_type Atoi failed", err)
+		return
+	}
+	//if actionType != 1 || actionType !=2 {
+	//	log.Println("RelationAction error:",err)
+	//	return
+	//}
+
+	relationActionReq = services.RelationActionRequest{
+		UserId:     userId.(int64),
+		ToUserId:   toUserId,
+		ActionType: int32(actionType),
+	}
+
+	// 从gin.Key中取出服务实例
+	userService := c.Keys["userService"].(services.UserService)
+	relationActionResp,err := userService.RelationAction(context.Background(),&relationActionReq)
+	if err!=nil{
+		log.Println("Login error:",err)
+		return
+	}
+
+	c.JSON(http.StatusOK,relationActionResp)
+
+}
+
 // 关注列表
 func FollowList(c *gin.Context){
 	var followReq services.FollowListRequest

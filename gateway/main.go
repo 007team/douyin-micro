@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/007team/douyin-micro/gateway/services"
+	//"github.com/007team/douyin-micro/gateway/wrappers"
 	"github.com/007team/douyin-micro/gateway/wrblib/routers"
 	"github.com/micro/go-micro/v2"
 
@@ -36,13 +37,13 @@ func main() {
 	// video服务调用实例
 	//taskService := services.NewTaskService("rpcTaskService",taskMicroService.Client())
 
-	// comment
-	//commentMicroService := micro.NewService(
-	//	micro.Name("taskService.client"),
-	//	micro.WrapClient(wrappers.NewCommentWrapper),
-	//)
-	// comment调用实例
-	//commentService := services.NewCommentService("rpcTaskService",commentMicroService.Client())
+	//comment
+	commentMicroService := micro.NewService(
+		micro.Name("commentService.client"),
+		//micro.WrapClient(wrappers.NewCommentWrapper),
+	)
+	//comment调用实例
+	commentService := services.NewCommentService("rpcCommentService",commentMicroService.Client())
 
 
 	//创建微服务实例，使用gin暴露http接口并注册到etcd
@@ -51,7 +52,7 @@ func main() {
 		//web.Address("10.54.12.125:4000"),
 		web.Address("127.0.0.1:4000"),
 		//将服务调用实例使用gin处理
-		web.Handler(routers.NewRouter(userService)),
+		web.Handler(routers.NewRouter(userService,commentService)),
 		//web.Handler(routers.NewRouter(userService,videoService,commentService)),
 		web.Registry(etcdReg),
 		web.RegisterTTL(time.Second*30),

@@ -151,13 +151,8 @@ func (s *UserService) UserInfo(ctx context.Context, request *services.UserReques
 
 }
 
-func (s *UserService) RelationAction(ctx context.Context, request *services.RelationActionRequest, response *services.RelationActionResponse) error {
-	panic("implement me")
-}
 
-//func (s *UserService) FollowList(ctx context.Context, request *services.FollowListRequest, response *services.FollowListResponse) error {
-//	panic("implement me")
-//}
+
 
 
 

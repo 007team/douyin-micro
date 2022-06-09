@@ -5,9 +5,10 @@ package redis
 
 import (
 	"fmt"
+	"github.com/007team/douyin-micro/comment/settings"
 	"strconv"
 
-	"github.com/007team/douyinapp/settings"
+
 	"github.com/go-redis/redis"
 )
 
