@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/007team/douyin-micro/video/dao/mysql"
-	"github.com/007team/douyin-micro/video/dao/qiniu"
 	"github.com/007team/douyin-micro/video/dao/redis"
 	"github.com/007team/douyin-micro/video/models"
 	"github.com/007team/douyin-micro/video/pkg/jwt"
@@ -22,8 +21,6 @@ import (
 )
 
 var (
-	VideoPath      string = "D:\\GO_WORK\\src\\douyinapp\\public\\video" // 保存视频的路径
-	ImgPath        string = "D:\\GO_WORK\\src\\douyinapp\\public\\img"   // 保存图片的路径
 	GetLastIdMutex sync.Mutex
 )
 
@@ -142,76 +139,56 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 }
 
 func (*VideoService) PublishAction(ctx context.Context, req *services.VideoPublishActionRequest, resp *services.VideoPublishActionResponse) error {
-	var video models.Video
-	// 并发不安全，加锁
-	GetLastIdMutex.Lock()
-	video.Id = mysql.GetLastId(&models.Video{}) + 1
-	GetLastIdMutex.Unlock()
-
-	//将视频保存到本地
-	if err = c.SaveUploadedFile(data, VideoPath+"\\"+strconv.Itoa(int(video.Id))+".mp4"); err != nil {
-		fmt.Println("c.SaveUploadedFile failed", err)
-		return err
+	video := models.Video{
+		UserId:   req.UserId,
+		PlayUrl:  req.Video.PlayUrl,
+		CoverUrl: req.Video.CoverUrl,
+		Title:    req.Video.Title,
 	}
-	fmt.Println("保存视频完成")
 
-	/*
-		生成缩略图 （视频封面）
-	*/
-	snapshotName, err := GetSnapshot(VideoPath+`\`+strconv.Itoa(int(video.Id))+".mp4", ImgPath, 5, video.Id)
+	err := mysql.CreateNewVideo(&video)
 	if err != nil {
-		fmt.Println("缩略图生成失败", err)
-		return err
+		log.Println("mysql.CreateNewVideo(&video)")
+		resp.StatusCode = 1
+		resp.StatusMsg = "服务繁忙 请稍后再试"
+		return nil
 	}
-	fmt.Println("生成缩略图完成")
-
-	/*
-		上传视频到七牛云
-	*/
-	_, fileUrl, err := qiniu.UploadVideoToQiNiu(data, video.Id)
-	if err != nil {
-		fmt.Println("qiniu upload video failed")
-		return
-	}
-	fmt.Println("上传视频完成")
-	video.PlayUrl = fileUrl
-
-	//上传封面到七牛云
-	coverUrl := qiniu.UploadImgToQiNiu(snapshotName, ImgPath, video.Id)
-	video.CoverUrl = coverUrl
-	fmt.Println("上传封面到七牛云完成")
 
 	// 添加videoId到 视频数zset 和 评论数zset
 	err = redis.Publish(video.Id)
 	if err != nil {
-		fmt.Println("redis.Publish(video.Id) failed")
-		return
+		log.Println("redis.Publish(video.Id) failed")
+		resp.StatusCode = 1
+		resp.StatusMsg = "服务繁忙 请稍后再试"
+		return nil
 	}
-	go func() {
-		/*
-			删除本地视频
-		*/
-		VideoFilePath := VideoPath + "\\" + strconv.Itoa(int(video.Id)) + ".mp4"
-		err = os.Remove(VideoFilePath)
-		if err != nil {
-			fmt.Println("本地视频文件删除失败", err)
-			return
-		}
-		fmt.Println("本地视频文件删除完成")
+	//go func() {
+	//	/*
+	//		删除本地视频
+	//	*/
+	//	VideoFilePath := VideoPath + "\\" + strconv.Itoa(int(video.Id)) + ".mp4"
+	//	err = os.Remove(VideoFilePath)
+	//	if err != nil {
+	//		fmt.Println("本地视频文件删除失败", err)
+	//		return
+	//	}
+	//	fmt.Println("本地视频文件删除完成")
+	//
+	//	/*
+	//		将本地封面删除
+	//	*/
+	//	CoverFilePath := ImgPath + "\\" + strconv.Itoa(int(video.Id)) + ".jpeg"
+	//	err = os.Remove(CoverFilePath)
+	//	if err != nil {
+	//		fmt.Println("本地封面缩略图删除失败")
+	//		return
+	//	}
+	//	fmt.Println("本地封面缩略图删除完成")
+	//}()
 
-		/*
-			将本地封面删除
-		*/
-		CoverFilePath := ImgPath + "\\" + strconv.Itoa(int(video.Id)) + ".jpeg"
-		err = os.Remove(CoverFilePath)
-		if err != nil {
-			fmt.Println("本地封面缩略图删除失败")
-			return
-		}
-		fmt.Println("本地封面缩略图删除完成")
-	}()
-
-	return mysql.CreateNewVideo(video)
+	resp.StatusCode = 0
+	resp.StatusMsg = "发布成功"
+	return nil
 }
 
 func (*VideoService) PublishList(ctx context.Context, req *services.VideoPublishListRequest, resp *services.VideoPublishListResponse) error {

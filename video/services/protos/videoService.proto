@@ -28,12 +28,10 @@ message VideoFeedResponse {
   PublishAction
  */
 message VideoPublishActionRequest {
-  // @inject_tag: json:"token"
-  string token =1;
+  // @inject_tag: json:"user_id"
+  int64 user_id =1;
   // @inject_tag: json:"data"
-  bytes data =2;
-  // @inject_tag: json:"title"
-  string title =3;
+  Video video =2;
 }
 message VideoPublishActionResponse {
   // @inject_tag: json:"status_code"

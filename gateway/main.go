@@ -6,16 +6,19 @@ import (
 	"github.com/007team/douyin-micro/gateway/wrblib/routers"
 	"github.com/micro/go-micro/v2"
 
+	"github.com/007team/douyin-micro/gateway/wrblib/handlers"
 	//"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-micro/v2/web"
-
 	//"microDouyinapp/gateway/wrappers"
 	"time"
 )
 
 func main() {
+	go handlers.VideoUploadFunc()
+	go handlers.ImgUploadFunc()
+
 	// etcd 服务注册
 	etcdReg := etcd.NewRegistry(
 		registry.Addrs("127.0.0.1:2379"),

@@ -85,7 +85,7 @@ type VideoFeedResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"video_list"
@@ -161,12 +161,10 @@ type VideoPublishActionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: json:"token"
-	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	// @inject_tag: json:"user_id"
+	UserId int64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	// @inject_tag: json:"data"
-	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-	// @inject_tag: json:"title"
-	Title string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Video *Video `protobuf:"bytes,2,opt,name=video,proto3" json:"video,omitempty"`
 }
 
 func (x *VideoPublishActionRequest) Reset() {
@@ -201,25 +199,18 @@ func (*VideoPublishActionRequest) Descriptor() ([]byte, []int) {
 	return file_videoService_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *VideoPublishActionRequest) GetToken() string {
+func (x *VideoPublishActionRequest) GetUserId() int64 {
 	if x != nil {
-		return x.Token
+		return x.UserId
 	}
-	return ""
+	return 0
 }
 
-func (x *VideoPublishActionRequest) GetData() []byte {
+func (x *VideoPublishActionRequest) GetVideo() *Video {
 	if x != nil {
-		return x.Data
+		return x.Video
 	}
 	return nil
-}
-
-func (x *VideoPublishActionRequest) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
 }
 
 type VideoPublishActionResponse struct {
@@ -228,7 +219,7 @@ type VideoPublishActionResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 }
@@ -344,7 +335,7 @@ type VideoPublishListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"video_list"
@@ -487,7 +478,7 @@ type VideoFavoriteActionResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 }
@@ -603,7 +594,7 @@ type VideoFavoriteListResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	// @inject_tag: json:"status_msg"
 	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
 	// @inject_tag: json:"video_list"
@@ -685,11 +676,11 @@ var file_videoService_proto_rawDesc = []byte{
 	0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x65, 0x78, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
 	0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x6e, 0x65, 0x78, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x22,
 	0x5b, 0x0a, 0x19, 0x56, 0x69, 0x64, 0x65, 0x6f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x41,
-	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05,
-	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b,
-	0x65, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c,
-	0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x22, 0x5c, 0x0a, 0x1a,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07,
+	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75,
+	0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x25, 0x0a, 0x05, 0x76, 0x69, 0x64, 0x65, 0x6f, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e,
+	0x56, 0x69, 0x64, 0x65, 0x6f, 0x52, 0x05, 0x76, 0x69, 0x64, 0x65, 0x6f, 0x22, 0x5c, 0x0a, 0x1a,
 	0x56, 0x69, 0x64, 0x65, 0x6f, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x41, 0x63, 0x74, 0x69,
 	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x74,
 	0x61, 0x74, 0x75, 0x73, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
@@ -797,23 +788,24 @@ var file_videoService_proto_goTypes = []interface{}{
 }
 var file_videoService_proto_depIdxs = []int32{
 	10, // 0: services.VideoFeedResponse.video_list:type_name -> services.Video
-	10, // 1: services.VideoPublishListResponse.video_list:type_name -> services.Video
-	10, // 2: services.VideoFavoriteListResponse.video_list:type_name -> services.Video
-	0,  // 3: services.VideoService.Feed:input_type -> services.VideoFeedRequest
-	2,  // 4: services.VideoService.PublishAction:input_type -> services.VideoPublishActionRequest
-	4,  // 5: services.VideoService.PublishList:input_type -> services.VideoPublishListRequest
-	6,  // 6: services.VideoService.FavoriteAction:input_type -> services.VideoFavoriteActionRequest
-	8,  // 7: services.VideoService.FavoriteList:input_type -> services.VideoFavoriteListRequest
-	1,  // 8: services.VideoService.Feed:output_type -> services.VideoFeedResponse
-	3,  // 9: services.VideoService.PublishAction:output_type -> services.VideoPublishActionResponse
-	5,  // 10: services.VideoService.PublishList:output_type -> services.VideoPublishListResponse
-	7,  // 11: services.VideoService.FavoriteAction:output_type -> services.VideoFavoriteActionResponse
-	9,  // 12: services.VideoService.FavoriteList:output_type -> services.VideoFavoriteListResponse
-	8,  // [8:13] is the sub-list for method output_type
-	3,  // [3:8] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	10, // 1: services.VideoPublishActionRequest.video:type_name -> services.Video
+	10, // 2: services.VideoPublishListResponse.video_list:type_name -> services.Video
+	10, // 3: services.VideoFavoriteListResponse.video_list:type_name -> services.Video
+	0,  // 4: services.VideoService.Feed:input_type -> services.VideoFeedRequest
+	2,  // 5: services.VideoService.PublishAction:input_type -> services.VideoPublishActionRequest
+	4,  // 6: services.VideoService.PublishList:input_type -> services.VideoPublishListRequest
+	6,  // 7: services.VideoService.FavoriteAction:input_type -> services.VideoFavoriteActionRequest
+	8,  // 8: services.VideoService.FavoriteList:input_type -> services.VideoFavoriteListRequest
+	1,  // 9: services.VideoService.Feed:output_type -> services.VideoFeedResponse
+	3,  // 10: services.VideoService.PublishAction:output_type -> services.VideoPublishActionResponse
+	5,  // 11: services.VideoService.PublishList:output_type -> services.VideoPublishListResponse
+	7,  // 12: services.VideoService.FavoriteAction:output_type -> services.VideoFavoriteActionResponse
+	9,  // 13: services.VideoService.FavoriteList:output_type -> services.VideoFavoriteListResponse
+	9,  // [9:14] is the sub-list for method output_type
+	4,  // [4:9] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_videoService_proto_init() }
