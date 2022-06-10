@@ -1,7 +1,5 @@
 package models
 
-import "time"
-
 type Comment struct {
 
 	Id        int64  	`json:"id,omitempty" gorm:"primaryKey; type:bigint(20) AUTO_INCREMENT"`
@@ -9,8 +7,8 @@ type Comment struct {
 	VideoId	  int64  	`json:"video_id"  gorm:"type:bigint(20)"`
 	User      User   	`json:"user" gorm:"foreignKey:UserId"`
 	Content   string 	`json:"content,omitempty" gorm:"type:mediumtext collate utf8mb4_general_ci NOT NULL"`
-	CreatedAt time.Time  `json:"create_date"`
-	UpdatedAt time.Time	`json:"update_date"`
+	CreatedAt JSONTime  `json:"create_date"`
+	UpdatedAt JSONTime	`json:"update_date"`
 }
 
 func (Comment) tableName() string {

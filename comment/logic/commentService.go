@@ -27,10 +27,10 @@ func BuildComment(item models.Comment) *services.Comment {
 		User:          BuildUser(item.User),
 		Content:		item.Content,
 		CreateDate: 	item.CreatedAt.String(),
-
 }
 	return &commentModel
 }
+
 
 func BuildCommentList(item []models.Comment) []*services.Comment{
 	commentlist := []*services.Comment{}
