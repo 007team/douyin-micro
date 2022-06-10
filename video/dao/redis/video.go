@@ -1,6 +1,7 @@
 package redis
 
 import (
+	"github.com/007team/douyin-micro/video/models"
 	"github.com/go-redis/redis"
 	"log"
 	"strconv"
@@ -66,4 +67,82 @@ func Publish(videoId int64) (err error) {
 		return err
 	}
 	return nil
+}
+
+func FavoriteAction(userId int64, videoId int64) (err error) {
+	KeyAllVideoZSet := getKeyAllVideoZSet()                  // 视频点赞数集合
+	KeyUserFavoriteVideoSet := getKeyUserFavoriteSet(userId) //用户的点赞视频集合
+	// 开启事务
+	pipe := rdb.TxPipeline()
+	// 对视频点赞数++
+	videoIdstr := strconv.Itoa(int(videoId))
+	err = pipe.ZIncrBy(KeyAllVideoZSet, 1, videoIdstr).Err()
+	if err != nil {
+		log.Println("pipe.ZIncrBy failed", err)
+	}
+
+	// 在用户的点赞视频列表里写入videoId
+	err = pipe.SAdd(KeyUserFavoriteVideoSet, videoId).Err()
+	if err != nil {
+		log.Println("pipe.SAdd failed", err)
+	}
+	_, err = pipe.Exec()
+	if err != nil {
+		log.Println("pipe failed", err)
+	}
+	return err
+}
+
+func UnFavoriteAction(userId, videoId int64) (err error) {
+	KeyAllVideoZSet := getKeyAllVideoZSet()                  // 视频点赞数集合
+	KeyUserFavoriteVideoSet := getKeyUserFavoriteSet(userId) //用户的点赞视频集合
+
+	//开启事务
+	pipe := rdb.TxPipeline()
+	// 对视频点赞数--
+	videoIdStr := strconv.Itoa(int(videoId))
+	err = pipe.ZIncrBy(KeyAllVideoZSet, -1, videoIdStr).Err()
+	if err != nil {
+		log.Println("pipe.ZIncrBy failed", err)
+	}
+	// 在用户的点赞视频列表里删除videoId
+	err = pipe.SRem(KeyUserFavoriteVideoSet, videoId).Err()
+	if err != nil {
+		log.Println("pipe.SRem failed", err)
+	}
+	_, err = pipe.Exec()
+	if err != nil {
+		log.Println("pipe failed", err)
+	}
+	return err
+}
+
+// IsFollowUser 我是否关注了这个用户
+func IsFollowUser(user *models.User, myUserId int64) (ok bool, err error) {
+	KeyMyFollowSet := getKeyUserFollowSet(myUserId)
+	ok, err = rdb.SIsMember(KeyMyFollowSet, user.Id).Result()
+	if err != nil {
+		log.Println("rdb.SIsMember(KeyMyFollowSet,user.Id).Result() failed", err)
+		return false, err
+	}
+	return ok, err
+}
+func UserFollowCount(userId int64) (FollowCount int64, err error) {
+	KeyUserFollowSet := getKeyUserFollowSet(userId)
+	FollowCount, err = rdb.SCard(KeyUserFollowSet).Result()
+	if err != nil {
+		log.Println("rdb.SCard(KeyUserFollowSet).Result() failed", err)
+		return 0, err
+	}
+	return FollowCount, err
+}
+
+func UserFollowerCount(userId int64) (FollowerCount int64, err error) {
+	KeyUserFollowerSet := getKeyUserFollowerSet(userId)
+	FollowerCount, err = rdb.SCard(KeyUserFollowerSet).Result()
+	if err != nil {
+		log.Println("rdb.SCard(KeyUserFollowerSet).Result() failed", err)
+		return 0, err
+	}
+	return FollowerCount, err
 }

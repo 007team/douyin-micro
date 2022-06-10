@@ -11,9 +11,7 @@ import (
 	"github.com/007team/douyin-micro/video/services"
 	"github.com/disintegration/imaging"
 	ffmpeg_go "github.com/u2takey/ffmpeg-go"
-	"io"
 	"log"
-	"mime/multipart"
 	"os"
 	"strconv"
 	"sync"
@@ -50,6 +48,7 @@ func BuildVideo(item models.Video) *services.Video {
 }
 
 func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, resp *services.VideoFeedResponse) error {
+	var err error
 	// 返回30个视频
 	videos, err := mysql.FindVideo()
 	if err != nil {
@@ -82,6 +81,31 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 			if ok {
 				videos[i].IsFavorite = true
 			}
+
+			// redis查询用户的粉丝与关注数
+			videos[i].Author.FollowCount, err = redis.UserFollowCount(videos[i].Author.Id)
+			if err != nil {
+				log.Println("redis.UserFollowCount(user.Id) failed", err)
+				resp.StatusCode = 1
+				resp.StatusMsg = "服务器繁忙，请稍后再试"
+				return nil
+			}
+			videos[i].Author.FollowerCount, err = redis.UserFollowerCount(videos[i].Author.Id)
+			if err != nil {
+				log.Println("redis.UserFollowerCount(user.Id) failed", err)
+				resp.StatusCode = 1
+				resp.StatusMsg = "服务器繁忙，请稍后再试"
+				return nil
+			}
+			// “我”是否关注了这个用户
+			videos[i].Author.IsFollow, err = redis.IsFollowUser(&videos[i].Author, userId)
+			if err != nil {
+				log.Println("redis.IsFollowUser(user, myUserId) failed", err)
+				resp.StatusCode = 1
+				resp.StatusMsg = "服务器繁忙，请稍后再试"
+				return nil
+			}
+
 			// 展示视频的点赞数
 			videos[i].FavoriteCount, err = redis.VideoFavoriteCount(video.Id)
 			if err != nil {
@@ -204,6 +228,28 @@ func (*VideoService) PublishList(ctx context.Context, req *services.VideoPublish
 }
 
 func (*VideoService) FavoriteAction(ctx context.Context, req *services.VideoFavoriteActionRequest, resp *services.VideoFavoriteActionResponse) error {
+	if req.ActionType == 1 {
+		// 赞
+		err := redis.FavoriteAction(req.UserId, req.VideoId)
+		if err != nil {
+			log.Println("redis.FavoriteAction(req.UserId, req.VideoId) failed")
+			resp.StatusCode = 1
+			resp.StatusMsg = "操作失败"
+			return nil
+		}
+	} else if req.ActionType == 2 {
+		// 取消赞
+		err := redis.UnFavoriteAction(req.UserId, req.VideoId)
+		if err != nil {
+			log.Println("redis.UnFavoriteAction(req.UserId, req.VideoId) failed")
+			resp.StatusCode = 1
+			resp.StatusMsg = "操作失败"
+			return nil
+		}
+	}
+
+	resp.StatusCode = 0
+	resp.StatusMsg = "操作成功"
 	return nil
 }
 
@@ -272,21 +318,4 @@ func GetSnapshot(videoPath, snapshotPath string, frameNum int, video_id int64) (
 	snapshotName = strconv.Itoa(int(video_id)) + ".jpeg"
 	fmt.Println("缩略图名是：", snapshotName)
 	return
-}
-
-func SaveUploadedFile(file *multipart.FileHeader, dst string) error {
-	src, err := file.Open()
-	if err != nil {
-		return err
-	}
-	defer src.Close()
-
-	out, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	defer out.Close()
-
-	_, err = io.Copy(out, src)
-	return err
 }

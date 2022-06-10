@@ -5,8 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/comment/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/dao/mysql/comment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/dao/redis/comment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/dao/redis/keys.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/logic/commentService.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/logic/pkg.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/models/comment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/models/jsontime.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/models/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/pkg/jwt/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/services/protos/commentService.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/services/protos/userModels.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment/settings/setting.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/services/protos/commentModels.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/services/protos/commentService.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/comment/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/comment/dao/redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/comment/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/comment/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/services/protos/commentModels.proto" beforeDir="false" afterPath="$PROJECT_DIR$/comment/services/protos/commentModels.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/protos/userService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/protos/userService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/services/userModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userService.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/services/userService.pb.micro.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrappers/commentWrapper.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrappers/commentWrapper.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/comment.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/comment.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/relation.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/relation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/relation.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/relation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/redis/relation.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/redis/relation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/logic/relationService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/relationService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/logic/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/userService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/services/userModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/services/userModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user.exe" beforeDir="false" afterPath="$PROJECT_DIR$/user/user.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/redis/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/services/userModels.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/services/userModels.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/video.exe" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +104,9 @@
       <recent name="D:\GO_WORK\src\douyin-micro\video" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GO_WORK\src\douyin-micro\video\services" />
       <recent name="D:\GO_WORK\src\douyin-micro\gateway\services" />
+      <recent name="D:\GO_WORK\src\douyin-micro\comment\services" />
+      <recent name="D:\GO_WORK\src\douyin-micro\video\services" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

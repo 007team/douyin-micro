@@ -118,6 +118,6 @@ service UserService{
   rpc UserInfo(UserRequest) returns(UserResponse);
   rpc RelationAction(RelationActionRequest) returns(RelationActionResponse);
   rpc FollowList(FollowListRequest) returns(FollowListResponse);
-  rpc FollowerList(FollowerListRequest) returns(FollowerListRequest);
+  rpc FollowerList(FollowerListRequest) returns(FollowerListResponse);
 
 }

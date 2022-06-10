@@ -20,7 +20,7 @@ func main() {
 	// 得到一个微服务实例
 	microService := micro.NewService(
 		micro.Name("rpcVideoService"), // 微服务名字
-		micro.Address("127.0.0.1:8083"),
+		micro.Address("127.0.0.1:8081"),
 		micro.Registry(etcdReg), // etcd注册件
 	)
 	// 结构命令行参数，初始化

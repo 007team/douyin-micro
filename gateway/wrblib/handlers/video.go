@@ -119,3 +119,33 @@ func FavoriteList(c *gin.Context) {
 	c.JSON(http.StatusOK, videoResp)
 
 }
+
+func FavoriteAction(c *gin.Context) {
+	var videoReq services.VideoFavoriteActionRequest
+	userId, ok := c.Get("user_id")
+	if !ok {
+		log.Println("c.Get(\"user_id\") failed")
+	}
+	videoReq.UserId = userId.(int64)
+
+	videoIdStr := c.Query("video_id")
+	videoId, err := strconv.ParseInt(videoIdStr, 10, 64)
+	if err != nil {
+		log.Println("strconv.ParseInt(videoIdStr,10,64) failed")
+		return
+	}
+	videoReq.VideoId = videoId
+
+	actionTypeStr := c.Query("action_type")
+	actionType, err := strconv.Atoi(actionTypeStr)
+	if err != nil {
+		log.Println("strconv.Atoi(actionTypeStr) failed")
+		return
+	}
+	videoReq.ActionType = int32(actionType)
+
+	videoService := c.Keys["videoService"].(services.VideoService)
+	videoResp, err := videoService.FavoriteAction(context.Background(), &videoReq)
+	PanicIfVideoError(err)
+	c.JSON(http.StatusOK, videoResp)
+}

@@ -34,7 +34,7 @@ type User struct {
 	// @inject_tag: json:"follower_count"
 	FollowerCount int64 `protobuf:"varint,4,opt,name=follower_count,json=followerCount,proto3" json:"follower_count,omitempty"`
 	// @inject_tag: json:"is_follow"
-	IsFollow bool `protobuf:"varint,5,opt,name=is_follow,json=isFollow,proto3" json:"is_follow,omitempty"`
+	IsFollow bool `protobuf:"varint,5,opt,name=is_follow,json=isFollow,proto3" json:"is_follow"`
 }
 
 func (x *User) Reset() {

@@ -3,15 +3,14 @@ package logic
 import (
 	"context"
 	"crypto/md5"
-	"crypto/rand"
 	"encoding/hex"
-	"log"
-
 	"github.com/007team/douyin-micro/user/dao/mysql"
 	"github.com/007team/douyin-micro/user/dao/redis"
 	"github.com/007team/douyin-micro/user/models"
 	"github.com/007team/douyin-micro/user/pkg/jwt"
 	"github.com/007team/douyin-micro/user/services"
+	"log"
+	"math/rand"
 )
 
 var letters = []byte("abcdefghjkmnpqrstuvwxyz123456789")
@@ -27,51 +26,12 @@ func BuildUser(item models.User) *services.User {
 	return &userModel
 }
 
-func BuildUserList(item []models.User) []*services.User {
+func BuildUserList(item []*models.User) []*services.User {
 	userlist := []*services.User{}
 	for _, user := range item {
-		userlist = append(userlist, BuildUser(user))
+		userlist = append(userlist, BuildUser(*user))
 	}
 	return userlist
-}
-
-func (*UserService) Login(ctx context.Context, req *services.UserLoginRequest, resp *services.UserLoginResponse) error {
-	oPassword := req.Password // 未加密的原密码
-	user := models.User{
-		Name:     req.Username,
-		Password: req.Password,
-	}
-
-	// 查询用户
-	if err := mysql.Login(&user); err != nil {
-		resp.StatusCode = 1
-		resp.StatusMsg = "登录失败"
-		return nil
-	}
-
-	// 进行密码校验
-	salt := user.Salt
-	newPassword := encryptPassword(oPassword, salt) // 将原密码加密
-	if newPassword != user.Password {
-		resp.StatusCode = 1
-		resp.StatusMsg = "密码错误"
-		return nil
-	}
-
-	// 生成token
-	token, _, err := jwt.GenToken(user.Id)
-	if err != nil {
-		log.Println("jwt,GenToken 生成token失败")
-		resp.StatusCode = 1
-		resp.StatusMsg = "登录失败 生成token失败"
-		return nil
-	}
-
-	resp.StatusCode = 0
-	resp.StatusMsg = "登录成功"
-	resp.UserId = user.Id
-	resp.Token = token
-	return nil
 }
 
 func (s *UserService) Register(ctx context.Context, request *services.UserRegisterRequest, response *services.UserRegisterResponse) error {
@@ -103,6 +63,38 @@ func (s *UserService) Register(ctx context.Context, request *services.UserRegist
 
 	response.StatusCode = 0
 	response.StatusMsg = "注册成功"
+	response.UserId = user.Id
+	//response.Token = token
+
+	return nil
+}
+
+func (s *UserService) Login(ctx context.Context, request *services.UserLoginRequest, response *services.UserLoginResponse) error {
+	// 获取未加密的原密码
+	oPassword := request.Password
+
+	user := &models.User{
+		Name:     request.Username,
+		Password: request.Password,
+	}
+	// 查询用户
+	if err := mysql.Login(user); err != nil {
+		response.StatusCode = 1
+		response.StatusMsg = "用户不存在"
+		log.Println(err)
+		return nil
+	}
+	// 进行密码校验
+	salt := user.Salt
+	newPassword := encryptPassword(oPassword, salt) // 将原密码加密
+	if newPassword != user.Password {
+		response.StatusCode = 1
+		response.StatusMsg = "密码错误"
+		log.Println("用户密码错误") // 用户密码错误
+		return nil
+	}
+	response.StatusCode = 0
+	response.StatusMsg = "登录成功"
 	response.UserId = user.Id
 	//response.Token = token
 
@@ -156,16 +148,7 @@ func (s *UserService) UserInfo(ctx context.Context, request *services.UserReques
 	response.User = BuildUser(user)
 
 	return nil
-}
 
-func (s *UserService) RelationAction(ctx context.Context, request *services.RelationActionRequest, response *services.RelationActionResponse) error {
-	return nil
-}
-
-func encryptPassword(oPassword string, salt string) string {
-	h := md5.New()
-	h.Write([]byte(salt))
-	return hex.EncodeToString(h.Sum([]byte(oPassword)))
 }
 
 // RandLow 生成加密密码用的随机字符串  salt
@@ -184,4 +167,9 @@ func RandLow() []byte {
 		b[i] = letters[arc]
 	}
 	return b
+}
+func encryptPassword(oPassword string, salt string) string {
+	h := md5.New()
+	h.Write([]byte(salt))
+	return hex.EncodeToString(h.Sum([]byte(oPassword)))
 }
