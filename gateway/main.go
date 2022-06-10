@@ -49,8 +49,8 @@ func main() {
 	//创建微服务实例，使用gin暴露http接口并注册到etcd
 	server := web.NewService(
 		web.Name("httpService"),
-		//web.Address("10.54.12.125:4000"),
-		web.Address("127.0.0.1:4000"),
+		web.Address("10.54.12.125:4000"),
+		//web.Address("127.0.0.1:4000"),
 		//将服务调用实例使用gin处理
 		web.Handler(routers.NewRouter(userService,commentService)),
 		//web.Handler(routers.NewRouter(userService,videoService,commentService)),

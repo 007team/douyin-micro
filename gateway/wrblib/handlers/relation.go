@@ -32,10 +32,6 @@ func RelationAction(c *gin.Context){
 		log.Println("action_type Atoi failed", err)
 		return
 	}
-	//if actionType != 1 || actionType !=2 {
-	//	log.Println("RelationAction error:",err)
-	//	return
-	//}
 
 	relationActionReq = services.RelationActionRequest{
 		UserId:     userId.(int64),
@@ -68,8 +64,19 @@ func FollowList(c *gin.Context){
 		})
 		return
 	}
+	//token,ok := c.Get("token")
+	//if !ok{
+	//	log.Println("FollowList: user_id invalied", err)
+	//	c.JSON(http.StatusOK, gin.H{
+	//		"status_code": 1,
+	//		"status_msg":  "userinfo parseInt failed",
+	//	})
+	//}
+	token := c.Query("token")
+
+
 	followReq.UserId = userid
-	// followReq.Token = c.Query("token")
+	followReq.Token = token
 
 	// 从gin.Key中取出服务实例
 	userService := c.Keys["userService"].(services.UserService)
@@ -94,7 +101,9 @@ func FollowerList(c *gin.Context){
 		})
 		return
 	}
+	token := c.Query("token")
 	followerReq.UserId=userid
+	followerReq.Token = token
 
 	// 从gin.Key中取出服务实例
 	userService := c.Keys["userService"].(services.UserService)

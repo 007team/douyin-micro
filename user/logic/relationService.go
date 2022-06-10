@@ -5,6 +5,7 @@ import (
 	"github.com/007team/douyin-micro/user/dao/mysql"
 	"github.com/007team/douyin-micro/user/dao/redis"
 	"github.com/007team/douyin-micro/user/models"
+	"github.com/007team/douyin-micro/user/pkg/jwt"
 	"github.com/007team/douyin-micro/user/services"
 	"log"
 )
@@ -47,7 +48,7 @@ func (s *UserService) RelationAction(ctx context.Context, request *services.Rela
 		if err != nil {
 			log.Println("logic.RelationAction failed", err)
 			response.StatusCode = 1
-			response.StatusMsg = "关注失败"
+			response.StatusMsg = "取关失败"
 			return nil
 		}
 		// 在对方的粉丝列表中删除我的id
@@ -55,9 +56,10 @@ func (s *UserService) RelationAction(ctx context.Context, request *services.Rela
 		if err != nil {
 			log.Println("logic.RelationAction failed", err)
 			response.StatusCode = 1
-			response.StatusMsg = "关注失败"
+			response.StatusMsg = "取关失败"
 			return nil
 		}
+
 		response.StatusCode = 0
 		response.StatusMsg = "取关成功"
 		return nil
@@ -69,6 +71,11 @@ func (s *UserService) RelationAction(ctx context.Context, request *services.Rela
 
 // 关注列表
 func (s *UserService) FollowList(ctx context.Context, request *services.FollowListRequest, response *services.FollowListResponse) error {
+	m, _ := jwt.ParseToken(request.Token)
+	// 我的id
+	myId := m.UserID
+	log.Println(myId)
+	
 	userId := request.UserId
 	es, err := redis.FollowList(userId)
 	if err != nil {
@@ -77,15 +84,45 @@ func (s *UserService) FollowList(ctx context.Context, request *services.FollowLi
 		response.StatusMsg = "服务器繁忙，请稍后再试"
 		return nil
 	}
-	var user []models.User
+	var userlist []*models.User
 	// mysql查询用户
 	if len(es) != 0 {
-		user, err = mysql.FollowList(es)
+		userlist, err = mysql.FollowListPointer(es)
 	}
 
+	// 从redis中读取其他字段
+	for _,user := range userlist{
+		user.FollowCount, err = redis.UserFollowCount(user.Id)
+		if err != nil {
+			log.Println("redis.UserFollowCount(user.Id) failed", err)
+			response.StatusCode = 1
+			response.StatusMsg = "服务器繁忙，请稍后再试"
+			return nil
+		}
+		user.FollowerCount, err = redis.UserFollowerCount(user.Id)
+		if err != nil {
+			log.Println("redis.UserFollowerCount(user.Id) failed", err)
+			response.StatusCode = 1
+			response.StatusMsg = "服务器繁忙，请稍后再试"
+			return nil
+		}
+
+		// “我”是否关注了这个用户
+		user.IsFollow, err = redis.IsFollowUser(user, myId)
+		if err != nil {
+			log.Println("redis.IsFollowUser(user, myUserId) failed", err)
+			response.StatusCode = 1
+			response.StatusMsg = "服务器繁忙，请稍后再试"
+			return nil
+		}
+
+		// log.Println(user)
+
+
+	}
 	response.StatusCode = 0
 	response.StatusMsg = "操作成功"
-	response.UserList = BuildUserList(user)
+	response.UserList = BuildUserList(userlist)
 
 	return nil
 
@@ -94,6 +131,10 @@ func (s *UserService) FollowList(ctx context.Context, request *services.FollowLi
 
 // 粉丝列表
 func (s *UserService) FollowerList(ctx context.Context, request *services.FollowerListRequest, response *services.FollowerListResponse) error {
+	m, _ := jwt.ParseToken(request.Token)
+	// 我的id
+	myId := m.UserID
+
 	userId := request.UserId
 	es, err := redis.FollowerList(userId)
 	if err != nil {
@@ -102,14 +143,45 @@ func (s *UserService) FollowerList(ctx context.Context, request *services.Follow
 		response.StatusMsg = "服务器繁忙，请稍后再试"
 		return nil
 	}
-	var user []models.User
+	var userlist []*models.User
 	if len(es) != 0 {
-		user, err = mysql.FollowerList(es)
+		userlist, err = mysql.FollowerListPointer(es)
 	}
+
+
+	// 从redis中读取其他字段
+	for _,user := range userlist{
+		user.FollowCount, err = redis.UserFollowCount(user.Id)
+		if err != nil {
+			log.Println("redis.UserFollowCount(user.Id) failed", err)
+			response.StatusCode = 1
+			response.StatusMsg = "服务器繁忙，请稍后再试"
+			return nil
+		}
+		user.FollowerCount, err = redis.UserFollowerCount(user.Id)
+		if err != nil {
+			log.Println("redis.UserFollowerCount(user.Id) failed", err)
+			response.StatusCode = 1
+			response.StatusMsg = "服务器繁忙，请稍后再试"
+			return nil
+		}
+
+		// “我”是否关注了这个用户
+		user.IsFollow, err = redis.IsFollowUser(user, myId)
+		if err != nil {
+			log.Println("redis.IsFollowUser(user, myUserId) failed", err)
+			response.StatusCode = 1
+			response.StatusMsg = "服务器繁忙，请稍后再试"
+			return nil
+		}
+		log.Println(user)
+	}
+
+
 
 	response.StatusCode = 0
 	response.StatusMsg = "操作成功"
-	response.UserList = BuildUserList(user)
+	response.UserList = BuildUserList(userlist)
 
 	return nil
 }

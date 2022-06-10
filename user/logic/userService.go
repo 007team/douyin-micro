@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
 	"github.com/007team/douyin-micro/user/dao/mysql"
 	"github.com/007team/douyin-micro/user/dao/redis"
 	"github.com/007team/douyin-micro/user/models"
@@ -26,10 +27,10 @@ func BuildUser(item models.User) *services.User {
 	return &userModel
 }
 
-func BuildUserList(item []models.User) []*services.User{
+func BuildUserList(item []*models.User) []*services.User{
 	userlist := []*services.User{}
 	for _,user := range item{
-		userlist = append(userlist,BuildUser(user))
+		userlist = append(userlist,BuildUser(*user))
 	}
 	return userlist
 }
@@ -142,6 +143,8 @@ func (s *UserService) UserInfo(ctx context.Context, request *services.UserReques
 		response.StatusMsg = "服务器繁忙，请稍后再试"
 		return nil
 	}
+
+	fmt.Println(user)
 
 	response.StatusCode = 0
 	response.StatusMsg = "操作成功"

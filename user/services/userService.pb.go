@@ -189,9 +189,9 @@ func (m *UserLoginRequest) GetPassword() string {
 
 type UserLoginResponse struct {
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
 	// @inject_tag: json:"user_id"
 	UserId int64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	// @inject_tag: json:"token"
@@ -306,11 +306,11 @@ func (m *UserRequest) GetToken() string {
 
 type UserResponse struct {
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
 	// @inject_tag: json:"user"
-	User                 *User    `protobuf:"bytes,3,opt,name=user,proto3" json:"user,omitempty"`
+	User                 *User    `protobuf:"bytes,3,opt,name=user,proto3" json:"user"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -433,9 +433,9 @@ func (m *RelationActionRequest) GetActionType() int32 {
 
 type RelationActionResponse struct {
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg            string   `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
+	StatusMsg            string   `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -532,11 +532,11 @@ func (m *FollowListRequest) GetToken() string {
 
 type FollowListResponse struct {
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg"`
 	// @inject_tag: json:"user_list"
-	UserList             []*User  `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
+	UserList             []*User  `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -640,11 +640,11 @@ func (m *FollowerListRequest) GetToken() string {
 
 type FollowerListResponse struct {
 	// @inject_tag: json:"status_code"
-	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	StatusCode int32 `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,"`
 	// @inject_tag: json:"status_msg"
-	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,omitempty"`
+	StatusMsg string `protobuf:"bytes,2,opt,name=status_msg,json=statusMsg,proto3" json:"status_msg,"`
 	// @inject_tag: json:"user_list"
-	UserList             []*User  `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
+	UserList             []*User  `protobuf:"bytes,3,rep,name=user_list,json=userList,proto3" json:"user_list"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

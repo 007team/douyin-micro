@@ -29,7 +29,7 @@ func FollowerActionToUser(toUserId, userId int64) (err error) {
 
 // UnFollowAction 在我的关注列表里删除对方id
 func UnFollowAction(userId, toUserId int64) (err error) {
-	userIdKey := getKeyUserFollowerSet(userId) // 我的关注列表
+	userIdKey := getKeyUserFollowSet(userId) // 我的关注列表
 	err = rdb.SRem(userIdKey, toUserId).Err()
 	if err != nil {
 		log.Println("UnFollowAction failed", err)

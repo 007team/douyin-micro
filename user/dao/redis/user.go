@@ -33,5 +33,7 @@ func IsFollowUser(user *models.User, myUserId int64) (ok bool, err error) {
 		log.Println("rdb.SIsMember(KeyMyFollowSet,user.Id).Result() failed", err)
 		return false, err
 	}
+
+	//log.Println(ok,myUserId)
 	return ok, err
 }
