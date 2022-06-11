@@ -3,6 +3,7 @@ package models
 import (
 	"database/sql/driver"
 	"fmt"
+	"log"
 	"time"
 )
 
@@ -25,11 +26,19 @@ func (t *JSONTime) UnmarshalJSON(data []byte) (err error) {
 }
 
 // MarshalJSON on JSONTime format Time field with Y-m-d H:i:s
+//func (t JSONTime) MarshalJSON() ([]byte, error) {
+//	if t.Time.IsZero() {
+//		return []byte("null"), nil
+//	}
+//	formatted := fmt.Sprintf("\"%s\"", t.Format(TimeFormat))
+//	return []byte(formatted), nil
+//}
+
 func (t JSONTime) MarshalJSON() ([]byte, error) {
 	if t.Time.IsZero() {
 		return []byte("null"), nil
 	}
-	formatted := fmt.Sprintf("\"%s\"", t.Format(TimeFormat))
+	formatted := fmt.Sprintf("%s", t.Format(TimeFormat))
 	return []byte(formatted), nil
 }
 
@@ -50,4 +59,15 @@ func (t *JSONTime) Scan(v interface{}) error {
 		return nil
 	}
 	return fmt.Errorf("can not convert %v to timestamp", v)
+}
+
+func (t *JSONTime) String() string {
+	time, err := t.MarshalJSON()
+	if err != nil {
+		log.Println("time.MarshalJson error:", err)
+		return ""
+	}
+	timeStr := string(time)
+
+	return timeStr
 }
