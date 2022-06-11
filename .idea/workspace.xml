@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235032.mp41654917850.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235032.mp41654917850.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comment/comment.exe" beforeDir="false" afterPath="$PROJECT_DIR$/comment/comment.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comment/models/jsontime.go" beforeDir="false" afterPath="$PROJECT_DIR$/comment/models/jsontime.go" afterDir="false" />
