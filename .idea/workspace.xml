@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/video.exe" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

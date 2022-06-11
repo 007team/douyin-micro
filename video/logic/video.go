@@ -59,6 +59,10 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 	}
 	videolist := make([]*services.Video, 0, len(videos))
 
+	wg := sync.WaitGroup{}
+	wg.Add(len(videos))
+	errChan := make(chan error, 100)
+
 	if len(req.Token) != 0 {
 		// 登录状态
 		m, err := jwt.ParseToken(req.Token)
@@ -69,92 +73,120 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 			resp.StatusMsg = "服务器繁忙 请稍后再试"
 			return nil
 		}
-		for i, video := range videos {
-			// 是否被用户点赞
-			ok, err := redis.IsFavoriteVideo(userId, video.Id)
-			if err != nil {
-				log.Println("redis.IsFavoriteVideo failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙 请稍后再试"
-				return nil
-			}
-			if ok {
-				videos[i].IsFavorite = true
-			}
+		for i := range videos {
+			go func(i int) {
+				// 是否被用户点赞
+				ok, err := redis.IsFavoriteVideo(userId, videos[i].Id)
+				if err != nil {
+					log.Println("redis.IsFavoriteVideo failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙 请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				if ok {
+					videos[i].IsFavorite = true
+				}
 
-			// redis查询用户的粉丝与关注数
-			videos[i].Author.FollowCount, err = redis.UserFollowCount(videos[i].Author.Id)
-			if err != nil {
-				log.Println("redis.UserFollowCount(user.Id) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙，请稍后再试"
-				return nil
-			}
-			videos[i].Author.FollowerCount, err = redis.UserFollowerCount(videos[i].Author.Id)
-			if err != nil {
-				log.Println("redis.UserFollowerCount(user.Id) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙，请稍后再试"
-				return nil
-			}
-			// “我”是否关注了这个用户
-			videos[i].Author.IsFollow, err = redis.IsFollowUser(&videos[i].Author, userId)
-			if err != nil {
-				log.Println("redis.IsFollowUser(user, myUserId) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙，请稍后再试"
-				return nil
-			}
+				// redis查询用户的粉丝与关注数
+				videos[i].Author.FollowCount, err = redis.UserFollowCount(videos[i].Author.Id)
+				if err != nil {
+					log.Println("redis.UserFollowCount(user.Id) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙，请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				videos[i].Author.FollowerCount, err = redis.UserFollowerCount(videos[i].Author.Id)
+				if err != nil {
+					log.Println("redis.UserFollowerCount(user.Id) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙，请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				// “我”是否关注了这个用户
+				videos[i].Author.IsFollow, err = redis.IsFollowUser(&videos[i].Author, userId)
+				if err != nil {
+					log.Println("redis.IsFollowUser(user, myUserId) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙，请稍后再试"
+					//return nil
+					errChan <- err
+				}
 
-			// 展示视频的点赞数
-			videos[i].FavoriteCount, err = redis.VideoFavoriteCount(video.Id)
-			if err != nil {
-				log.Println("redis.VideoFavoriteCount(video.Id) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙 请稍后再试"
-				return nil
-			}
-			// 展示视频的评论数
-			videos[i].CommentCount, err = redis.VideoCommentCount(video.Id)
-			if err != nil {
-				log.Println("redis.VideoCommentCount(video.Id) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙 请稍后再试"
-				return nil
-			}
-			// 脱敏处理
-			videos[i].Author.Salt = ""
-			videos[i].Author.Password = ""
-			videolist = append(videolist, BuildVideo(videos[i]))
+				// 展示视频的点赞数
+				videos[i].FavoriteCount, err = redis.VideoFavoriteCount(videos[i].Id)
+				if err != nil {
+					log.Println("redis.VideoFavoriteCount(video.Id) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙 请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				// 展示视频的评论数
+				videos[i].CommentCount, err = redis.VideoCommentCount(videos[i].Id)
+				if err != nil {
+					log.Println("redis.VideoCommentCount(video.Id) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙 请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				// 脱敏处理
+				videos[i].Author.Salt = ""
+				videos[i].Author.Password = ""
+				videolist = append(videolist, BuildVideo(videos[i]))
+				wg.Done()
+			}(i)
+
 		}
 
 	} else {
 
 		// 未登录状态
-		for i, video := range videos {
-			// 展示视频的点赞数
-			videos[i].FavoriteCount, err = redis.VideoFavoriteCount(video.Id)
-			if err != nil {
-				log.Println("redis.VideoFavoriteCount(video.Id) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙 请稍后再试"
-				return nil
-			}
-			// 展示视频的评论数
-			videos[i].CommentCount, err = redis.VideoCommentCount(video.Id)
-			if err != nil {
-				log.Println("redis.VideoCommentCount(video.Id) failed", err)
-				resp.StatusCode = 1
-				resp.StatusMsg = "服务器繁忙 请稍后再试"
-				return nil
-			}
-			// 脱敏处理
-			videos[i].Author.Salt = ""
-			videos[i].Author.Password = ""
-			videolist = append(videolist, BuildVideo(videos[i]))
+		for i, _ := range videos {
+			go func(i int) {
+				// 展示视频的点赞数
+				videos[i].FavoriteCount, err = redis.VideoFavoriteCount(videos[i].Id)
+				if err != nil {
+					log.Println("redis.VideoFavoriteCount(video.Id) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙 请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				// 展示视频的评论数
+				videos[i].CommentCount, err = redis.VideoCommentCount(videos[i].Id)
+				if err != nil {
+					log.Println("redis.VideoCommentCount(video.Id) failed", err)
+					//resp.StatusCode = 1
+					//resp.StatusMsg = "服务器繁忙 请稍后再试"
+					//return nil
+					errChan <- err
+				}
+				// 脱敏处理
+				videos[i].Author.Salt = ""
+				videos[i].Author.Password = ""
+				videolist = append(videolist, BuildVideo(videos[i]))
+				wg.Done()
+			}(i)
 		}
-	}
 
+	}
+	//for err := range errChan {
+	//	fmt.Println(err)
+	//	resp.StatusCode = 1
+	//	resp.StatusMsg = "服务器繁忙 请稍后再试"
+	//	return nil
+	//}
+
+	wg.Wait()
+	if len(errChan) != 0 {
+		resp.StatusCode = 1
+		resp.StatusMsg = "服务器繁忙 请稍后再试"
+		return nil
+	}
 	resp.StatusCode = 0
 	resp.StatusMsg = "操作成功"
 	resp.VideoList = videolist
