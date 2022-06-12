@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/comment.exe" beforeDir="false" afterPath="$PROJECT_DIR$/comment/comment.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/comment/dao/mysql/mysql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/videoImgUpload.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/videoImgUpload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user.exe" beforeDir="false" afterPath="$PROJECT_DIR$/user/user.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/mysql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/video.exe" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.exe" afterDir="false" />
     </list>
@@ -54,7 +59,7 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web_app" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">

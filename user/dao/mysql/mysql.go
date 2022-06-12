@@ -5,12 +5,9 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/007team/douyin-micro/user/models"
-
 	"github.com/007team/douyin-micro/user/settings"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"log"
 )
 
 // 对mysql进行操作时，用db这个变量来操作数据库
@@ -35,17 +32,15 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 
 	sqlDB, err := db.DB()
 
-	err = db.AutoMigrate(&models.User{})
-	if err != nil {
-		log.Println(err)
-	}
+	//err = db.AutoMigrate(&models.User{})
+	//if err != nil {
+	//	log.Println(err)
+	//}
 	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
 	sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
 
 	// SetMaxOpenConns 设置打开数据库连接的最大数量。
 	sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
-
-	db.AutoMigrate(&models.User{})
 
 	return err
 }

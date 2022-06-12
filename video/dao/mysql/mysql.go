@@ -5,8 +5,6 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/007team/douyin-micro/video/models"
-
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -36,7 +34,6 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 
 	sqlDB, err := db.DB()
 
-	err = db.AutoMigrate(&models.User{})
 	if err != nil {
 		log.Println(err)
 	}
@@ -46,6 +43,6 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	// SetMaxOpenConns 设置打开数据库连接的最大数量。
 	sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
 
-	db.AutoMigrate(&models.Video{})
+	//db.AutoMigrate(&models.Video{})
 	return err
 }

@@ -57,7 +57,7 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 		resp.StatusMsg = "服务器繁忙 请稍后再试"
 		return nil
 	}
-	videolist := make([]*services.Video, 0, len(videos))
+	videolist := make([]*services.Video, len(videos))
 
 	wg := sync.WaitGroup{}
 	wg.Add(len(videos))
@@ -136,7 +136,7 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 				// 脱敏处理
 				videos[i].Author.Salt = ""
 				videos[i].Author.Password = ""
-				videolist = append(videolist, BuildVideo(videos[i]))
+				videolist[i] = BuildVideo(videos[i])
 				wg.Done()
 			}(i)
 
@@ -168,7 +168,7 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 				// 脱敏处理
 				videos[i].Author.Salt = ""
 				videos[i].Author.Password = ""
-				videolist = append(videolist, BuildVideo(videos[i]))
+				videolist[i] = BuildVideo(videos[i])
 				wg.Done()
 			}(i)
 		}
@@ -293,13 +293,13 @@ func (*VideoService) FavoriteList(ctx context.Context, req *services.VideoFavori
 		resp.StatusMsg = "服务繁忙 请稍后再试"
 		return nil
 	}
-	// mysql查询视频数据
+
 	if len(es) == 0 {
 		resp.StatusCode = 0
 		resp.StatusMsg = "操作成功"
 		return nil
 	}
-
+	// mysql查询视频数据
 	videos, err := mysql.FavoriteList(es)
 	if err != nil {
 		log.Println("mysql.FavoriteList(es) failed")
@@ -309,6 +309,7 @@ func (*VideoService) FavoriteList(ctx context.Context, req *services.VideoFavori
 	}
 	videolist := make([]*services.Video, 0, len(videos))
 	for i, _ := range videos {
+		videos[i].FavoriteCount, _ = redis.VideoFavoriteCount(videos[i].Id)
 		videolist = append(videolist, BuildVideo(videos[i]))
 	}
 
