@@ -33,12 +33,6 @@ func FavoriteList(es []string) (videos []models.Video, err error) {
 	return videos, err
 }
 
-// GetLastId 获取最后一位视频id
-func GetLastId(video *models.Video) (id int64) {
-	db.Last(&video)
-	return video.Id
-}
-
 // CreateNewVideo
 func CreateNewVideo(video *models.Video) (err error) {
 	if err = db.Select("user_id", "play_url", "cover_url", "title").Create(video).Error; err != nil {

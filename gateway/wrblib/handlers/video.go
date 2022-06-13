@@ -68,6 +68,7 @@ func Publish(c *gin.Context) {
 		filename: videoFileName,
 	}
 
+	// 塞入管道
 	VideoProcess.VideoChan <- v
 	ImgProcess.ImgChan <- snapshotName
 

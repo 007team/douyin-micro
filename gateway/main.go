@@ -25,7 +25,6 @@ func main() {
 	//user
 	userMicroService := micro.NewService(
 		micro.Name("userService.client"),
-		//micro.WrapClient(wrappers.NewUserWrapper),
 	)
 
 	// 用户服务调用实例
@@ -34,7 +33,7 @@ func main() {
 	// video
 	videoMicroService := micro.NewService(
 		micro.Name("videoService.client"),
-		//micro.WrapClient(wrappers.NewVideoWrapper),
+
 	)
 	// video服务调用实例
 	videoService := services.NewVideoService("rpcVideoService", videoMicroService.Client())
@@ -42,7 +41,6 @@ func main() {
 	// comment
 	commentMicroService := micro.NewService(
 		micro.Name("commentService.client"),
-		//micro.WrapClient(wrappers.NewCommentWrapper),
 	)
 	// comment调用实例
 	commentService := services.NewCommentService("rpcCommentService", commentMicroService.Client())
@@ -50,7 +48,7 @@ func main() {
 	//创建微服务实例，使用gin暴露http接口并注册到etcd
 	server := web.NewService(
 		web.Name("httpService"),
-		web.Address("192.168.109.1:4000"),
+		web.Address(""),
 		//将服务调用实例使用gin处理
 		web.Handler(routers.NewRouter(userService, videoService, commentService)),
 		web.Registry(etcdReg),

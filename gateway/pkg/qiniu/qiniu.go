@@ -11,15 +11,15 @@ import (
 )
 
 var (
-	AccessKey        = "_TBooutIx4PP6IYLADZ1ue_wBPGc46EC0yv4WlG-"
-	SerectKey        = "hC5xVP__weeda_wh_1oJxlMfLlljM8Re8sP_eKyj"
+	AccessKey        = ""
+	SerectKey        = ""
 	Bucket           = "007douyin"                    // bucket name
 	ImgUrl           = "rchgbnnln.hn-bkt.clouddn.com" // 域名
 	ErrorQiniuFailed = errors.New("七牛：视频上传失败")
 )
 
 // UploadVideoToQiNiu 将视频上传到七牛云
-func UploadVideoToQiNiu(file *multipart.FileHeader, filename string) () {
+func UploadVideoToQiNiu(file *multipart.FileHeader, filename string) {
 	src, err := file.Open()
 	if err != nil {
 		log.Fatalln("qiniu put failed 1")

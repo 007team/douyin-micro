@@ -5,22 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/retelimit.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/video/pkg/cron/cron.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comment/comment.exe" beforeDir="false" afterPath="$PROJECT_DIR$/comment/comment.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pkg/qiniu/qiniu.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pkg/qiniu/qiniu.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrappers/commentWrapper.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrappers/userWrapper.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrappers/videoWrapper.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/middlewares/retelimit.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/retelimit.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mq-server/config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mq-server/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mq-server/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mq-server/setting/setting.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/mysql/relation.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/relation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/dao/redis/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/redis/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/logic/relationService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/relationService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/logic/userService.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/logic/userService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/user.exe" beforeDir="false" afterPath="$PROJECT_DIR$/user/user.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/video/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/mysql/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/dao/redis/keys.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/keys.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video/dao/redis/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/video/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/video/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/pkg/cron/cron.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/pkg/cron/cron.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220526160454.mp41655014299.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527234954.mp41654830896.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527234954.mp41655013593.jpeg" beforeDir="false" />

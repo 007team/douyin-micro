@@ -65,14 +65,12 @@ func taskVideoCommentCount() {
 }
 
 func CronTask() {
-	log.Println("crontask start....")
+	log.Println("Cron Starting...")
 	c := cron.New()
 	c.AddFunc("*/5 * * * *", taskUserFollowCount)
 	c.AddFunc("*/5 * * * *", taskUserFollowerCount)
 	c.AddFunc("*/5 * * * *", taskVideoFavoriteCount)
 	c.AddFunc("*/5 * * * *", taskVideoCommentCount)
-
 	c.Start()
-
 	select {}
 }

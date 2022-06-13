@@ -81,33 +81,15 @@ func (s *UserService) FollowList(ctx context.Context, request *services.FollowLi
 		return nil
 	}
 	var userlist []*models.User
+
 	// mysql查询用户
 	if len(es) != 0 {
 		userlist, err = mysql.FollowListPointer(es)
 	}
-
-	// 从redis中读取其他字段
-	for i, user := range userlist {
-		userlist[i].FollowCount, err = redis.UserFollowCount(user.Id)
-		if err != nil {
-			log.Println("redis.UserFollowCount(user.Id) failed", err)
-			response.StatusCode = 1
-			response.StatusMsg = "服务器繁忙，请稍后再试"
-			return nil
-		}
-		userlist[i].FollowerCount, err = redis.UserFollowerCount(user.Id)
-		if err != nil {
-			log.Println("redis.UserFollowerCount(user.Id) failed", err)
-			response.StatusCode = 1
-			response.StatusMsg = "服务器繁忙，请稍后再试"
-			return nil
-		}
-
+	for i := range userlist {
 		userlist[i].IsFollow = true
-
-		// log.Println(user)
-
 	}
+
 	response.StatusCode = 0
 	response.StatusMsg = "操作成功"
 	response.UserList = BuildUserList(userlist)
@@ -137,21 +119,6 @@ func (s *UserService) FollowerList(ctx context.Context, request *services.Follow
 
 	// 从redis中读取其他字段
 	for i, user := range userlist {
-		userlist[i].FollowCount, err = redis.UserFollowCount(user.Id)
-		if err != nil {
-			log.Println("redis.UserFollowCount(user.Id) failed", err)
-			response.StatusCode = 1
-			response.StatusMsg = "服务器繁忙，请稍后再试"
-			return nil
-		}
-		userlist[i].FollowerCount, err = redis.UserFollowerCount(user.Id)
-		if err != nil {
-			log.Println("redis.UserFollowerCount(user.Id) failed", err)
-			response.StatusCode = 1
-			response.StatusMsg = "服务器繁忙，请稍后再试"
-			return nil
-		}
-
 		// “我”是否关注了这个用户
 		userlist[i].IsFollow, err = redis.IsFollowUser(user, myId)
 		if err != nil {

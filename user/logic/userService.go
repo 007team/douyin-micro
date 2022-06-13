@@ -117,24 +117,8 @@ func (s *UserService) UserInfo(ctx context.Context, request *services.UserReques
 		return nil
 	}
 
-	// redis查询用户的粉丝与关注数
-	var err error
-	user.FollowCount, err = redis.UserFollowCount(user.Id)
-	if err != nil {
-		log.Println("redis.UserFollowCount(user.Id) failed", err)
-		response.StatusCode = 1
-		response.StatusMsg = "服务器繁忙，请稍后再试"
-		return nil
-	}
-	user.FollowerCount, err = redis.UserFollowerCount(user.Id)
-	if err != nil {
-		log.Println("redis.UserFollowerCount(user.Id) failed", err)
-		response.StatusCode = 1
-		response.StatusMsg = "服务器繁忙，请稍后再试"
-		return nil
-	}
-
 	// “我”是否关注了这个用户
+	var err error
 	user.IsFollow, err = redis.IsFollowUser(&user, myId)
 	if err != nil {
 		log.Println("redis.IsFollowUser(user, myUserId) failed", err)

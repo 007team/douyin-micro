@@ -94,11 +94,8 @@ func (*VideoService) Feed(ctx context.Context, req *services.VideoFeedRequest, r
 				videolist[i] = BuildVideo(videos[i])
 				wg.Done()
 			}(i)
-
 		}
-
 	} else {
-
 		// 未登录状态
 		for i, _ := range videos {
 			go func(i int) {
@@ -146,29 +143,6 @@ func (*VideoService) PublishAction(ctx context.Context, req *services.VideoPubli
 		resp.StatusMsg = "服务繁忙 请稍后再试"
 		return nil
 	}
-	//go func() {
-	//	/*
-	//		删除本地视频
-	//	*/
-	//	VideoFilePath := VideoPath + "\\" + strconv.Itoa(int(video.Id)) + ".mp4"
-	//	err = os.Remove(VideoFilePath)
-	//	if err != nil {
-	//		fmt.Println("本地视频文件删除失败", err)
-	//		return
-	//	}
-	//	fmt.Println("本地视频文件删除完成")
-	//
-	//	/*
-	//		将本地封面删除
-	//	*/
-	//	CoverFilePath := ImgPath + "\\" + strconv.Itoa(int(video.Id)) + ".jpeg"
-	//	err = os.Remove(CoverFilePath)
-	//	if err != nil {
-	//		fmt.Println("本地封面缩略图删除失败")
-	//		return
-	//	}
-	//	fmt.Println("本地封面缩略图删除完成")
-	//}()
 
 	resp.StatusCode = 0
 	resp.StatusMsg = "发布成功"
@@ -237,7 +211,6 @@ func (*VideoService) FavoriteList(ctx context.Context, req *services.VideoFavori
 	}
 	videolist := make([]*services.Video, 0, len(videos))
 	for i, _ := range videos {
-		videos[i].FavoriteCount, _ = redis.VideoFavoriteCount(videos[i].Id)
 		videolist = append(videolist, BuildVideo(videos[i]))
 	}
 
