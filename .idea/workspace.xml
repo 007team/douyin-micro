@@ -34,6 +34,7 @@
       <change beforePath="$PROJECT_DIR$/video/dao/mysql/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/dao/redis/keys.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/keys.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/redis/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/video/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/video/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
