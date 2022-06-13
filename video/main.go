@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/007team/douyin-micro/video/conf"
 	"github.com/007team/douyin-micro/video/logic"
+	"github.com/007team/douyin-micro/video/pkg/cron"
 	"github.com/007team/douyin-micro/video/services"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
@@ -12,6 +13,9 @@ import (
 func main() {
 	// 配置初始化
 	conf.Init()
+
+	// 定时任务
+	go cron.CronTask()
 
 	// etcd注册件
 	etcdReg := etcd.NewRegistry(

@@ -34,3 +34,16 @@ func getKeyUserFollowSet(userId int64) string {
 func getKeyUserFollowerSet(userId int64) string {
 	return Prefix + KeyUserFollowerSet + strconv.Itoa(int(userId))
 }
+
+func CronKeyAllVideoZSet() string {
+	return getKeyAllVideoZSet()
+}
+func CronKeyAllVideoCommentCountZSet() string {
+	return getKeyAllVideoCommentCountZSet()
+}
+func CronKeyUserFollowSet(userId int64) string {
+	return getKeyUserFollowSet(userId)
+}
+func CronKeyUserFollowerSet(userId int64) string {
+	return getKeyUserFollowerSet(userId)
+}

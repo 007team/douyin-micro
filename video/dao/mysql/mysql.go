@@ -46,3 +46,6 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	//db.AutoMigrate(&models.Video{})
 	return err
 }
+func DB() *gorm.DB {
+	return db
+}

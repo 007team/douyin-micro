@@ -5,15 +5,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28e3dd3f-e52d-43b7-a8d5-30fcf1729baa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gateway/wrblib/middlewares/retelimit.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video/pkg/cron/cron.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comment/comment.exe" beforeDir="false" afterPath="$PROJECT_DIR$/comment/comment.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/comment/dao/mysql/mysql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/gateway.exe" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/wrblib/handlers/videoImgUpload.go" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/wrblib/handlers/videoImgUpload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/user.exe" beforeDir="false" afterPath="$PROJECT_DIR$/user/user.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/dao/mysql/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/mysql/mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/redis/keys.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/keys.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/redis/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/dao/redis/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/dao/redis/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/video/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/video/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/logic/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/logic/video.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/video/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220526160454.mp41655014299.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527234954.mp41654830896.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527234954.mp41655013593.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527235004.mp41654831008.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527235010.mp41654831040.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527235014.mp41655013503.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==1WeChat_20220527235032.mp41655013474.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160454.mp41654787611.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160519.mp41654788536.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160519.mp41654789576.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160526.mp41654928379.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160535.mp41654787642.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160535.mp41654866110.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160545.mp41654787564.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160545.mp41654866182.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160625.mp41654788070.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220526160625.mp41654865970.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527234954.mp41654786764.mp4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527234954.mp41654789550.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527234954.mp41654865828.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235010.mp41654866211.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235014.mp41654788815.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235026.mp41654787060.mp4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235032.mp41654786821.mp4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235032.mp41654917850.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235045.mp41654788133.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235050.mp41654788672.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/img/cover==2WeChat_20220527235050.mp41654866093.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220526160454.mp41655014299.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220527234954.mp41654830896.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220527234954.mp41655013593.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220527235004.mp41654831008.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220527235010.mp41654831040.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220527235014.mp41655013503.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==1WeChat_20220527235032.mp41655013474.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160454.mp41654787611.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160519.mp41654788536.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160519.mp41654789576.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160526.mp41654928379.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160535.mp41654787642.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160535.mp41654866110.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160545.mp41654787564.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160545.mp41654866182.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160625.mp41654788070.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220526160625.mp41654865970.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527234954.mp41654786764.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527234954.mp41654789550.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527234954.mp41654865828.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235010.mp41654866211.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235014.mp41654788815.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235026.mp41654787060.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235032.mp41654786821.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235032.mp41654917850.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235045.mp41654788133.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235050.mp41654788672.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/public/video/video==2WeChat_20220527235050.mp41654866093.mp4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/video/video.exe" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +103,18 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/user/logic/userService.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/user/dao/mysql/user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/video/dao/redis/keys.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gateway/wrblib/handlers/video.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gateway/wrblib/handlers/videoImgUpload.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/video/logic/video.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/video/dao/redis/redis.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/video/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/video/dao/redis/video.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gateway/wrblib/middlewares/retelimit.go" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -59,7 +134,7 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web_app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
@@ -72,6 +147,25 @@
       <recent name="D:\GO_WORK\src\douyin-micro\comment\services" />
       <recent name="D:\GO_WORK\src\douyin-micro\video\services" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="douyin-micro" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="douyin-micro" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

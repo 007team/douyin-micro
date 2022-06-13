@@ -31,16 +31,16 @@ func VideoFavoriteCount(videoId int64) (int64, error) {
 }
 
 // VideoCommentCount 获取视频的评论数
-func VideoCommentCount(videoId int64) (int64, error) {
-	KeyAllVideoCommentCountZSet := getKeyAllVideoCommentCountZSet()
-	videoIdStr := strconv.Itoa(int(videoId))
-	countF, err := rdb.ZScore(KeyAllVideoCommentCountZSet, videoIdStr).Result()
-	if err != nil {
-		log.Println("rdb.ZScore(KeyAllVideoCommentCountZSet, videoIdStr) failed", err)
-		return 0, err
-	}
-	return int64(countF), nil
-}
+//func VideoCommentCount(videoId int64) (int64, error) {
+//	KeyAllVideoCommentCountZSet := getKeyAllVideoCommentCountZSet()
+//	videoIdStr := strconv.Itoa(int(videoId))
+//	countF, err := rdb.ZScore(KeyAllVideoCommentCountZSet, videoIdStr).Result()
+//	if err != nil {
+//		log.Println("rdb.ZScore(KeyAllVideoCommentCountZSet, videoIdStr) failed", err)
+//		return 0, err
+//	}
+//	return int64(countF), nil
+//}
 
 func FavoriteList(userId int64) (es []string, err error) {
 	KeyUserFavoriteSet := getKeyUserFavoriteSet(userId)
@@ -127,22 +127,23 @@ func IsFollowUser(user *models.User, myUserId int64) (ok bool, err error) {
 	}
 	return ok, err
 }
-func UserFollowCount(userId int64) (FollowCount int64, err error) {
-	KeyUserFollowSet := getKeyUserFollowSet(userId)
-	FollowCount, err = rdb.SCard(KeyUserFollowSet).Result()
-	if err != nil {
-		log.Println("rdb.SCard(KeyUserFollowSet).Result() failed", err)
-		return 0, err
-	}
-	return FollowCount, err
-}
 
-func UserFollowerCount(userId int64) (FollowerCount int64, err error) {
-	KeyUserFollowerSet := getKeyUserFollowerSet(userId)
-	FollowerCount, err = rdb.SCard(KeyUserFollowerSet).Result()
-	if err != nil {
-		log.Println("rdb.SCard(KeyUserFollowerSet).Result() failed", err)
-		return 0, err
-	}
-	return FollowerCount, err
-}
+//func UserFollowCount(userId int64) (FollowCount int64, err error) {
+//	KeyUserFollowSet := getKeyUserFollowSet(userId)
+//	FollowCount, err = rdb.SCard(KeyUserFollowSet).Result()
+//	if err != nil {
+//		log.Println("rdb.SCard(KeyUserFollowSet).Result() failed", err)
+//		return 0, err
+//	}
+//	return FollowCount, err
+//}
+
+//func UserFollowerCount(userId int64) (FollowerCount int64, err error) {
+//	KeyUserFollowerSet := getKeyUserFollowerSet(userId)
+//	FollowerCount, err = rdb.SCard(KeyUserFollowerSet).Result()
+//	if err != nil {
+//		log.Println("rdb.SCard(KeyUserFollowerSet).Result() failed", err)
+//		return 0, err
+//	}
+//	return FollowerCount, err
+//}

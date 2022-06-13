@@ -18,7 +18,7 @@ func NewRouter(service ...interface{}) *gin.Engine {
 	apiRouter := r.Group("/douyin")
 	//
 	//// basic apis
-	apiRouter.GET("/feed/", middlewares.JWTAuthMiddlewareForFeed(), handlers.Feed)
+	apiRouter.GET("/feed/", middlewares.RateLimit(), middlewares.JWTAuthMiddlewareForFeed(), handlers.Feed)
 	apiRouter.POST("/user/register/", handlers.Register)
 	apiRouter.POST("/user/login/", handlers.Login)
 	apiRouter.GET("/user/", middlewares.JWTAuthMiddleware(), handlers.UserInfo)
